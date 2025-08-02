@@ -131,7 +131,7 @@ const Navbar = () => {
               </li>
               <li className="flex flex-row justify-center gap-6 w-full mt-4">
                 <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaLinkedin /></Link>
-                <Link href="https://github.com/VishwamShah07" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaGithub /></Link>
+                <Link href="https://github.com/Vishwam-shah" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaGithub /></Link>
                 <Link href="" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaDiscord /></Link>
                 <Link href="" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaTwitter /></Link>
               </li>
