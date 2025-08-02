@@ -1,0 +1,41 @@
+.react-tel-input .flag-dropdown {
+  background: #23234d !important;
+  border: 1px solid #0891b2 !important;
+  border-radius: 0.5rem 0 0 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.react-tel-input .selected-flag {
+  margin-right: 0.25rem !important;
+}
+.react-tel-input input[type="tel"] {
+  padding-left: 48px !important; /* default for react-phone-input-2 */
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+.react-tel-input .flag-dropdown.open {
+  background-color: #23234d !important;
+  border: 1px solid #0891b2 !important;
+  border-radius: 0.5rem 0 0 0.5rem !important;
+}
+.react-tel-input .flag-dropdown.open {
+  background-color: #23234d !important;
+  border: 1px solid #0891b2 !important;
+  border-radius: 0.5rem 0 0 0.5rem !important;
+}
+.react-tel-input .selected-flag {
+  padding-right: 0.75rem !important; /* Add space between flag and input */
+}
+.react-tel-input .country-list .country.highlight,
+.react-tel-input .country-list .country:hover {
+  background-color: #000 !important;
+  color: #0891b2 !important;
+}
+
+/* Contact icon hover effect */
+.contact-icons-row svg {
+  color: #23234d;
+  transition: color 0.2s;
+}
+.contact-icons-row svg:hover {
+  color: #0891b2 !important;
+}
