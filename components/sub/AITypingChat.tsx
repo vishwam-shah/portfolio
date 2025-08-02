@@ -29,33 +29,34 @@ const aiSuggestions = [
 
 const AITypingChat = () => {
   const [index, setIndex] = useState(0);
-  const [input, setInput] = useState(aiSuggestions[0]);
+  const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % aiSuggestions.length);
-      setInput(aiSuggestions[(index + 1) % aiSuggestions.length]);
-    }, 2500);
-    return () => clearInterval(interval);
+    if (!isFocused) {
+      const interval = setInterval(() => {
+        setIndex((prev) => (prev + 1) % aiSuggestions.length);
+      }, 2500);
+      return () => clearInterval(interval);
+    }
     // eslint-disable-next-line
-  }, [index]);
-
-  useEffect(() => {
-    setInput(aiSuggestions[index]);
-    // eslint-disable-next-line
-  }, []);
+  }, [isFocused]);
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     setShowModal(true);
+    setModalMessage(input);
+    setIsFocused(false);
   };
 
   return (
-    <div className="flex flex-col items-center w-full z-30">
+    <div className="flex flex-col items-center justify-center mx-auto w-[90vw] max-w-[300px] sm:max-w-[350px] md:max-w-[500px] lg:max-w-[700px] mt-10 z-30">
       <motion.div
-        className="relative w-full max-w-md mt-4 z-20"
+        className="relative w-full max-w-full mt-4 z-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -63,19 +64,32 @@ const AITypingChat = () => {
         <div className="absolute inset-0 rounded-2xl z-0 animate-gradient-move bg-gradient-to-r from-purple-500 via-cyan-400 to-blue-500 bg-[length:200%_200%] border-4 border-transparent" style={{ filter: 'blur(6px)' }} />
         <form
           onSubmit={handleSend}
-          className="relative z-10 flex items-center bg-[#181829]/90 rounded-2xl px-4 py-2 shadow-lg border-2 border-transparent focus-within:border-cyan-400"
+          className="relative z-10 flex items-center bg-[#181829]/90 rounded-2xl px-2 sm:px-4 md:px-6 py-2 md:py-3 shadow-lg border-2 border-transparent focus-within:border-cyan-400 w-full"
         >
           <FaRobot className="text-cyan-400 mr-2 animate-bounce" size={22} />
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent outline-none text-cyan-200 font-mono text-base md:text-lg placeholder:text-cyan-300 transition-all duration-200 cursor-pointer"
-            style={{ boxShadow: 'none', border: 'none' }}
-            placeholder="Ask or type your AI idea..."
-            autoFocus
-          />
+          {/* Animated suggestion text, not editable until focused */}
+          {!isFocused ? (
+            <div
+              className="flex-1 bg-transparent outline-none text-cyan-200 font-mono text-base sm:text-lg md:text-xl px-2 sm:px-4 break-words whitespace-pre-line w-full min-h-[40px] max-h-[120px] flex items-center cursor-pointer"
+              style={{ minWidth: '0', width: '100%' }}
+              tabIndex={0}
+              onClick={() => setIsFocused(true)}
+              onFocus={() => setIsFocused(true)}
+            >
+              <span className="animate-fade-in" key={index}>{aiSuggestions[index]}</span>
+            </div>
+          ) : (
+            <textarea
+              ref={textareaRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              rows={2}
+              className="block flex-1 bg-transparent outline-none text-cyan-200 font-mono text-base sm:text-lg md:text-xl placeholder:text-cyan-300 transition-all duration-200 px-2 sm:px-4 break-words whitespace-pre-line w-full resize-none min-h-[40px] max-h-[120px]"
+              style={{ boxShadow: 'none', border: 'none', minWidth: '0', width: '100%' }}
+              placeholder="Ask or type your AI idea..."
+              autoFocus
+            />
+          )}
           <button
             type="submit"
             className="ml-2 p-2 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 hover:from-purple-500 hover:to-cyan-400 text-white shadow-md transition-all duration-300 focus:outline-none cursor-pointer scale-100 hover:scale-110 active:scale-95 active:ring-2 active:ring-purple-400"
@@ -86,7 +100,7 @@ const AITypingChat = () => {
           </button>
         </form>
       </motion.div>
-      {showModal && <AITypingModal onClose={() => setShowModal(false)} suggestion={input} />}
+      {showModal && <AITypingModal onClose={() => setShowModal(false)} suggestion={modalMessage} editable />}
     </div>
   );
 };

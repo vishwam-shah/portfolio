@@ -17,11 +17,6 @@ import AITypingChat from "./AITypingChat";
 const HeroContent = () => {
   return (
     <>
-      <div className="w-full flex justify-center mt-8 mb-2">
-        <div className="w-full max-w-md mx-auto">
-          <AITypingChat />
-        </div>
-      </div>
       <motion.div
         initial="hidden"
         animate="visible"
