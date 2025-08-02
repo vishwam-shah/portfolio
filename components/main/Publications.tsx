@@ -2,7 +2,7 @@ import React from 'react';
 
 const publications = [
   {
-    title: 'Your AI Paper Title',
+    title: 'EEG Based Motor Imagery Classification Using Deep Learning',
     venue: 'Journal/Conference Name',
     year: 2025,
     description: 'Short summary of your publication or research.',
