@@ -51,11 +51,11 @@ const Footer = () => {
                     <div className="font-bold text-[16px] mb-2 md:mb-4 whitespace-nowrap">Social Media</div>
                     <p className="flex flex-row items-center my-[15px] cursor-pointer hover:text-green-500">
                         <FaInstagram />
-                        <Link href="https://instagram.com/vishwamshah007" target="_blank"><span className="text-[15px] ml-[6px]">Instagram</span></Link>
+                        <Link href="https://instagram.com/vishwam07" target="_blank"><span className="text-[15px] ml-[6px]">Instagram</span></Link>
                     </p>
                     <p className="flex flex-row items-center my-[15px] cursor-pointer hover:text-green-500">
                         <FaWhatsapp />
-                        <Link href="https://wa.me/919825012345" target="_blank"><span className="text-[15px] ml-[6px]">WhatsApp</span></Link>
+                        <Link href="https://wa.me/917984683397" target="_blank"><span className="text-[15px] ml-[6px]">WhatsApp</span></Link>
                     </p>
                     <p className="flex flex-row items-center my-[15px] cursor-pointer hover:text-blue-400">
                         <RxTwitterLogo />
@@ -76,7 +76,7 @@ const Footer = () => {
                     </p>
                     <p className="flex flex-row items-center my-2 cursor-pointer hover:text-blue-400">
                         <FaDiscord />
-                        <Link href="tel:+917984683397" target="_blank"><span className="text-[15px] ml-[6px]">+91 98250 12345</span></Link>
+                        <Link href="tel:+917984683397" target="_blank"><span className="text-[15px] ml-[6px]">+91 79846 83397</span></Link>
                     </p>
                 </div>
             </div>

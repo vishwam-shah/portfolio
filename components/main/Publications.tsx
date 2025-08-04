@@ -3,9 +3,9 @@ import React from 'react';
 const publications = [
   {
     title: 'EEG Based Motor Imagery Classification Using Deep Learning',
-    venue: 'Journal/Conference Name',
+    venue: 'ICCCNT 2025',
     year: 2025,
-    description: 'Short summary of your publication or research.',
+    description: 'This work reviews recent advances in EEG-based motor imagery classification for non-invasive brain-computer interfaces. It highlights semi-supervised learning, attention mechanisms, CNNs, and Riemannian geometry as key techniques for improving accuracy and overcoming challenges in interpreting complex, individual EEG signals.',
     link: '#',
   },
   // Add more publications here

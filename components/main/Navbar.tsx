@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaTwitter, FaGithub, FaLinkedin, FaDiscord } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -70,9 +70,9 @@ const Navbar = () => {
 
         <div className="hidden md:flex md:flex-row md:justify-between  md:gap-5 md:text-gray-200 md:text-[24px]">
         <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className=' hover:text-green-400'><FaLinkedin /></Link>
-          <Link href="" target="_blank" className=' hover:text-green-400'><FaGithub /></Link>
-          <Link href="https://discord.gg/" target="_blank" className=' hover:text-green-400'><FaDiscord /></Link>
-           <Link href="" target="_blank" className=' hover:text-green-400'><FaTwitter /></Link>
+          <Link href="https://www.github.com/vishwam-shah" target="_blank" className=' hover:text-green-400'><FaGithub /></Link>
+          <Link href="https://www.instagram.com/vishwam07" target="_blank" className=' hover:text-pink-500'><FaInstagram /></Link>
+          <Link href="https://wa.me/917984683397" target="_blank" className=' hover:text-green-400'><FaWhatsapp /></Link>
         </div>
 
         {/* Mobile menu button */}
@@ -132,8 +132,8 @@ const Navbar = () => {
               <li className="flex flex-row justify-center gap-6 w-full mt-4">
                 <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaLinkedin /></Link>
                 <Link href="https://github.com/Vishwam-shah" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaGithub /></Link>
-                <Link href="" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaDiscord /></Link>
-                <Link href="" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaTwitter /></Link>
+                <Link href="https://www.instagram.com/vishwamshah07" target="_blank" className="text-pink-500 text-2xl hover:text-pink-400"><FaInstagram /></Link>
+                <Link href="https://wa.me/919825022222" target="_blank" className="text-green-400 text-2xl hover:text-green-300"><FaWhatsapp /></Link>
               </li>
             </motion.ul>
           </div>

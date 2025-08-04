@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { slideInFromLeft } from "@/utils/motion";
-import { FaDiscord, FaGithub, FaLinkedin, FaTwitter, FaUserAstronaut } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaUserAstronaut, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import Link from 'next/link';
 
 const Aboutme = () => {
@@ -38,9 +38,9 @@ const Aboutme = () => {
         </div>
         <div className="flex gap-3 p-4 my-4 text-gray-200 text-[24px]">
           <Link href="https://www.linkedin.com/in/vishwam-shah" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-500 cursor-pointer"><FaLinkedin /></Link>
-          <Link href="https://www.github.com/vishwamshah07" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-500 cursor-pointer"><FaGithub /></Link>
-          <Link href="https://discord.gg/" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-500 cursor-pointer"><FaDiscord /></Link>
-          <Link href="https://www.twitter.com/" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-500 cursor-pointer"><FaTwitter /></Link>
+          <Link href="https://www.github.com/vishwam-shah" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-500 cursor-pointer"><FaGithub /></Link>
+          <Link href="https://www.instagram.com/vishwam07" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-pink-500 cursor-pointer"><FaInstagram /></Link>
+          <Link href="https://wa.me/917984683397" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400 cursor-pointer"><FaWhatsapp /></Link>
         </div>
         <Link
           href="https://drive.google.com/file/d/1Z-xXY0Oxu7qDSU-C8F-jB7T7XqvQxwJL/view?usp=drive_link"

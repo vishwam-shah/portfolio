@@ -1,22 +1,26 @@
 import React from 'react';
 
 const timeline = [
+  
   {
     year: '2025',
     title: 'AI Researcher',
-    description: 'Started working as an AI researcher at SpaceAI Labs.',
+    description: 'Started working as an AI researcher at PDEU.',
+    place: 'PDEU',
     icon: '🚀',
   },
   {
     year: '2024',
-    title: 'Full Stack Developer',
-    description: 'Built scalable AI-powered web apps.',
+    title: 'Web Developer',
+    description: 'Built scalable web apps.',
+    place: 'Internship',
     icon: '💻',
   },
   {
     year: '2023',
     title: 'Graduated',
-    description: 'Completed B.Tech in Computer Science.',
+    description: 'Completed B.Tech in Information Technology.',
+    place: 'PDEU',
     icon: '🎓',
   },
   // Add more timeline events here
@@ -33,6 +37,7 @@ const Timeline = () => (
           </div>
           <div className="pl-4">
             <div className="text-lg font-semibold text-cyan-300">{item.year} — {item.title}</div>
+            <div className="text-sm text-purple-300 mt-1">{item.place}</div>
             <div className="text-gray-300 mt-1">{item.description}</div>
           </div>
         </div>
