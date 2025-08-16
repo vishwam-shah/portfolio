@@ -20,7 +20,7 @@ const timeline = [
     year: '2023',
     title: 'Graduated',
     description: 'Completed B.Tech in Information Technology.',
-    place: 'PDEU',
+    place: 'SAL ENGINEERING AND TECHNICAL INSTITUTE',
     icon: '🎓',
   },
   // Add more timeline events here

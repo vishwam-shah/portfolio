@@ -20,8 +20,36 @@ const manualProjects = [
     name: 'AI Based Stock Market Sentiment Analysis',
     description: 'Analyzes stock market sentiment using AI and NLP techniques to predict market trends and investor behavior.',
     language: 'python',
-    html_url: '#',
-    homepage: '',
+    source: 'https://github.com/vishwam-shah/stock-sentiment-ai',
+    liveDemo: 'https://stockai-demo.vercel.app',
+    thumbnail: '/cryptocurrency.png',
+  },
+  {
+    id: 'manual-2',
+    name: 'Built RealtyEaseAI From Scratch',
+    description: 'End-to-end development of a Viartual Assistant Platform Providing Customized dashboard for their users based on their service with , Built Admin Panel and added Multiple Features',
+    language: 'typescript',
+    source: 'https://github.com/vishwam-shah/realtyeaseai',
+    liveDemo: 'https://realtyeaseai.com',
+    thumbnail: '/mamafood.png',
+  },
+  {
+    id: 'manual-2',
+    name: 'Built Krafting From Scratch',
+    description: 'Built Digital Marketing Website Providing Customized Digital Solutions for Clients to increase their online presence and engagement.',
+    language: 'typescript',
+    source: 'https://github.com/vishwam-shah/Krafting',
+    liveDemo: 'https://Krafting.in',
+    thumbnail: '/mamafood.png',
+  },
+  {
+    id: 'manual-2',
+    name: 'Built LMS From Scratch',
+    description: 'Built Learning Management System Providing Customized Learning Solutions for Clients to increase their online presence and engagement.',
+    language: 'typescript',
+    source: 'https://github.com/vishwam-shah/Krafting',
+    liveDemo: 'https://Krafting.in',
+    thumbnail: '/mamafood.png',
   },
   // {
   //   id: 'manual-2',
@@ -94,8 +122,27 @@ const Projects = () => {
               transition={{ duration: 0.4, delay: idx * 0.22 + 0.45 }}
               viewport={{ once: true }}
             >
-              <a href={project.html_url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline cursor-pointer transition-all duration-200 hover:text-cyan-400">Source</a>
-              {project.homepage && <a href={project.homepage} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline cursor-pointer transition-all duration-200 hover:text-purple-400">Live Demo</a>}
+                {/* Manual projects: use source and liveDemo; GitHub projects: use html_url and homepage */}
+                {project.source || project.html_url ? (
+                  <a
+                    href={project.source || project.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:underline cursor-pointer transition-all duration-200 hover:text-cyan-400"
+                  >
+                    Source
+                  </a>
+                ) : null}
+                {(project.liveDemo || project.homepage) && (
+                  <a
+                    href={project.liveDemo || project.homepage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-400 hover:underline cursor-pointer transition-all duration-200 hover:text-purple-400"
+                  >
+                    Live Demo
+                  </a>
+                )}
             </motion.div>
           </motion.div>
         ))}
