@@ -1,7 +1,7 @@
 "use client";
 import './globals.css';
-import dynamic from 'next/dynamic';
 import Navbar from '@/components/main/Navbar';
+import dynamic from 'next/dynamic';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from 'next/font/google';
 import React, { useEffect, useState } from 'react';

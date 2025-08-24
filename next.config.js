@@ -7,7 +7,12 @@ const nextConfig = withBundleAnalyzer({
   images: {
     // Remove unoptimized for production, use next/image for optimization
     // unoptimized: true,
-    domains: ['localhost'], // Add your image domains if needed
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+      },
+    ],
   },
   optimizeFonts: true,
   async headers() {
