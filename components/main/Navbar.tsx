@@ -120,7 +120,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="w-full">
-                <Link href="https://drive.google.com/file/d/1KjRjK3qWAsK4-yEJrB662YIp4fAJmg8t/view?usp=sharing" target="_blank" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all">
+                <Link href="https://drive.google.com/file/d/17jxrOQIfwcipQO8qiOXj-CUzywQGuQ4v/view?usp=sharing" target="_blank" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all">
                   Get My Resume
                 </Link>
               </li>
