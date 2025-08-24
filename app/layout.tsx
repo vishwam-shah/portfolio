@@ -5,11 +5,11 @@ import Navbar from '@/components/main/Navbar';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from 'next/font/google';
 import React, { useEffect, useState } from 'react';
-import { CursorifyProvider } from '@cursorify/react';
 
 const inter = Inter({ subsets: ['latin'] });
 const StarsCanvas = dynamic(() => import('@/components/main/StarBackground'), { ssr: false });
 const Loader = dynamic(() => import('@/components/main/Loader'), { ssr: false });
+import { Analytics } from "@vercel/analytics/next"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [showLoader, setShowLoader] = useState(true);
@@ -30,18 +30,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta charSet="utf-8" />
       </head>
       <body className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}>
-        <CursorifyProvider cursor="Z">
-          {showLoader ? (
-            <Loader />
-          ) : (
-            <>
-              <StarsCanvas />
-              <Navbar />
-              {children}
-              <SpeedInsights />
-            </>
-          )}
-        </CursorifyProvider>
+        <Analytics />
+        {showLoader ? (
+          <Loader />
+        ) : (
+          <>
+            <StarsCanvas />
+            <Navbar />
+            {children}
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );
