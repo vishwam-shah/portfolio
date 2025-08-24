@@ -29,7 +29,7 @@ const Aboutme = () => {
           <p>
             Hi! I’m Vishwam Shah, an <span className="text-cyan-300 font-semibold">AI/ML & Full Stack Developer</span> passionate about building intelligent systems and exploring the cosmos through code.<br/>
             My journey spans <span className="text-purple-300">deep learning</span>, <span className="text-purple-300">NLP</span>, <span className="text-purple-300">computer vision</span>, and scalable web platforms.<br/>
-            I thrive at the intersection of <span className="text-cyan-300">AI</span> and <span className="text-cyan-300">space</span>, creating solutions that push boundaries and inspire curiosity.
+            I thrive at the intersection of <span className="text-cyan-300">AI</span> and <span className="text-cyan-300">Full Stack Web Apps</span>, creating solutions that push boundaries and inspire curiosity.
           </p>
           <p className="mt-4">
             With experience in <span className="text-cyan-300">Python</span>, <span className="text-cyan-300">PyTorch</span>, <span className="text-cyan-300">Next.js</span>, and <span className="text-cyan-300">cloud-native</span> technologies, I love transforming ideas into impactful products.<br/>
