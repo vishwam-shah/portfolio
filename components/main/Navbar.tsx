@@ -1,14 +1,11 @@
 "use client"
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-const AITypingModal = dynamic(() => import('../sub/AITypingModal'), { ssr: false });
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const [showAIModal, setShowAIModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -67,16 +64,9 @@ const Navbar = () => {
               Projects
             </Link>
             <Link href="https://drive.google.com/file/d/17jxrOQIfwcipQO8qiOXj-CUzywQGuQ4v/view?usp=sharing" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
-            <button
-              type="button"
-              className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400 bg-transparent border-none outline-none"
-              onClick={() => setShowAIModal(true)}
-            >
+            <Link href="#contact" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
               Contact
-            </button>
-      {showAIModal && (
-        <AITypingModal onClose={() => setShowAIModal(false)} suggestion={"Hi, I want to collaborate!"} />
-      )}
+            </Link>
           </div>
         </div>
 
@@ -84,8 +74,8 @@ const Navbar = () => {
         <div className="flex flex-row justify-between gap-5 text-gray-200 text-[24px]">
           <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className='hover:text-green-400'><FaLinkedin /></Link>
           <Link href="https://github.com/Vishwam-shah" target="_blank" className='hover:text-green-400'><FaGithub /></Link>
-          {/* <Link href="https://www.instagram.com/vishwamshah07" target="_blank" className='hover:text-pink-500'><FaInstagram /></Link>
-          <Link href="https://wa.me/919825022222" target="_blank" className='hover:text-green-400'><FaWhatsapp /></Link> */}
+          <Link href="https://www.instagram.com/vishwamshah07" target="_blank" className='hover:text-pink-500'><FaInstagram /></Link>
+          <Link href="https://wa.me/919825022222" target="_blank" className='hover:text-green-400'><FaWhatsapp /></Link>
         </div>
 
         {/* Mobile menu button */}

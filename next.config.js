@@ -1,30 +1,19 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 /** @type {import('next').NextConfig} */
-const nextConfig = withBundleAnalyzer({
+const nextConfig = {
   images: {
-    // Remove unoptimized for production, use next/image for optimization
-    // unoptimized: true,
+    unoptimized: true, // For static export (next export)
+    formats: ['image/webp', 'image/avif'], // Modern formats for better performance
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'localhost',
+        hostname: '**',
       },
     ],
   },
-  optimizeFonts: true,
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-    ];
-  },
-});
+  trailingSlash: true, // Recommended for static export
+  reactStrictMode: true, // Recommended for performance and future-proofing
+  swcMinify: true, // Use SWC for faster builds
+};
 
 module.exports = nextConfig;
+  

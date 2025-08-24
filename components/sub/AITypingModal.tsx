@@ -63,7 +63,7 @@ const AITypingModal = ({ onClose, suggestion, editable }: AITypingModalProps) =>
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center min-h-screen bg-black/60">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
         <div ref={modalRef} className="bg-[#181829] rounded-2xl shadow-2xl p-8 w-full max-w-md relative border-2 border-cyan-400 animate-fade-in">
           <button
             className="absolute top-3 right-3 text-gray-400 hover:text-red-400 text-xl"

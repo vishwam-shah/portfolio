@@ -10,6 +10,7 @@ const aiSkills = [
   { name: "PyTorch", icon: <SiPytorch size={38} color="#EE4C2C" /> },
   { name: "TensorFlow", icon: <SiTensorflow size={38} color="#FF6F00" /> },
   { name: "Scikit-learn", icon: <SiScikitlearn size={38} color="#F7931E" /> },
+  { name: "HuggingFace", icon: <Image src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" width={38} height={38} /> },
   { name: "Numpy", icon: <SiNumpy size={38} color="#013243" /> },
   { name: "Pandas", icon: <SiPandas size={38} color="#150458" /> },
   { name: "Jupyter", icon: <SiJupyter size={38} color="#F37626" /> },
