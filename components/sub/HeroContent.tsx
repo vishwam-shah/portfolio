@@ -11,7 +11,7 @@ import { SparklesIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaDiscord, FaTwitter} from "react-icons/fa";
 import Link from "next/link";
-import AITypingChat from "./AITypingChat";
+// import AITypingChat from "./AITypingChat";
 
 
 const HeroContent = () => {

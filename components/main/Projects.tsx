@@ -1,17 +1,20 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Image from 'next/image';
-import { FaRobot, FaRocket, FaGlobe, FaBrain } from 'react-icons/fa';
+const FaRobot = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaRobot })));
+const FaRocket = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaRocket })));
+const FaGlobe = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaGlobe })));
+const FaBrain = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaBrain })));
 import { motion } from 'framer-motion';
 
 const GITHUB_USERNAME = 'vishwam-shah';
 
 const iconMap = {
-  javascript: <FaRocket className="text-yellow-400" size={28} />,
-  typescript: <FaRobot className="text-cyan-400" size={28} />,
-  python: <FaBrain className="text-cyan-400" size={28} />,
-  default: <FaGlobe className="text-purple-400" size={28} />,
+  javascript: <Suspense fallback={<span /> }><FaRocket className="text-yellow-400" size={28} /></Suspense>,
+  typescript: <Suspense fallback={<span /> }><FaRobot className="text-cyan-400" size={28} /></Suspense>,
+  python: <Suspense fallback={<span /> }><FaBrain className="text-cyan-400" size={28} /></Suspense>,
+  default: <Suspense fallback={<span /> }><FaGlobe className="text-purple-400" size={28} /></Suspense>,
 };
 
 const manualProjects = [
@@ -84,12 +87,13 @@ const Projects = () => {
           <motion.div
             key={project.id}
             className="bg-gradient-to-br from-[#181829] to-[#23234d] rounded-2xl p-8 shadow-xl border border-[#2d2d5a] flex flex-col gap-4 relative hover:scale-[1.025] transition-transform z-[40]"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(0,255,255,0.15)' }}
-            transition={{ duration: 0.6, type: 'spring', bounce: 0.25, delay: idx * 0.1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            whileHover={{ scale: 1.03, boxShadow: '0 8px 32px 0 rgba(0,255,255,0.15)' }}
+            transition={{ duration: 0.3, type: 'spring', bounce: 0.15, delay: idx * 0.05 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
+            {/* Thumbnail removed as requested */}
             <motion.div
               className="absolute -top-6 left-6 transition-transform duration-300 hover:scale-125 drop-shadow-lg"
               whileHover={{ rotate: 8, scale: 1.2 }}

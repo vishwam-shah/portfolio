@@ -1,11 +1,14 @@
 "use client"
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+const AITypingModal = dynamic(() => import('../sub/AITypingModal'), { ssr: false });
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
+  const [showAIModal, setShowAIModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -44,6 +47,8 @@ const Navbar = () => {
             width={60}
             height={60}
             className="cursor-pointer hover:animate-slowspin rounded-[50%]"
+            loading="lazy"
+            priority={false}
           />
           <span className="font-bold ml-[10px] hidden md:block text-gray-300 hover:text-emerald-500">
             AI Dev
@@ -61,18 +66,26 @@ const Navbar = () => {
             <Link href="#projects" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
               Projects
             </Link>
-            <Link href="https://drive.google.com/file/d/1KjRjK3qWAsK4-yEJrB662YIp4fAJmg8t/view?usp=sharing" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
-            <Link href="#contact" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
+            <Link href="https://drive.google.com/file/d/17jxrOQIfwcipQO8qiOXj-CUzywQGuQ4v/view?usp=sharing" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
+            <button
+              type="button"
+              className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400 bg-transparent border-none outline-none"
+              onClick={() => setShowAIModal(true)}
+            >
               Contact
-            </Link>
+            </button>
+      {showAIModal && (
+        <AITypingModal onClose={() => setShowAIModal(false)} suggestion={"Hi, I want to collaborate!"} />
+      )}
           </div>
         </div>
 
-        <div className="hidden md:flex md:flex-row md:justify-between  md:gap-5 md:text-gray-200 md:text-[24px]">
-        <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className=' hover:text-green-400'><FaLinkedin /></Link>
-          <Link href="https://www.github.com/vishwam-shah" target="_blank" className=' hover:text-green-400'><FaGithub /></Link>
-          <Link href="https://www.instagram.com/vishwam07" target="_blank" className=' hover:text-pink-500'><FaInstagram /></Link>
-          <Link href="https://wa.me/917984683397" target="_blank" className=' hover:text-green-400'><FaWhatsapp /></Link>
+        {/* Social links: visible on all devices */}
+        <div className="flex flex-row justify-between gap-5 text-gray-200 text-[24px]">
+          <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className='hover:text-green-400'><FaLinkedin /></Link>
+          <Link href="https://github.com/Vishwam-shah" target="_blank" className='hover:text-green-400'><FaGithub /></Link>
+          {/* <Link href="https://www.instagram.com/vishwamshah07" target="_blank" className='hover:text-pink-500'><FaInstagram /></Link>
+          <Link href="https://wa.me/919825022222" target="_blank" className='hover:text-green-400'><FaWhatsapp /></Link> */}
         </div>
 
         {/* Mobile menu button */}
@@ -129,12 +142,7 @@ const Navbar = () => {
                   Contact
                 </Link>
               </li>
-              <li className="flex flex-row justify-center gap-6 w-full mt-4">
-                <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaLinkedin /></Link>
-                <Link href="https://github.com/Vishwam-shah" target="_blank" className="text-cyan-300 text-2xl hover:text-green-400"><FaGithub /></Link>
-                <Link href="https://www.instagram.com/vishwamshah07" target="_blank" className="text-pink-500 text-2xl hover:text-pink-400"><FaInstagram /></Link>
-                <Link href="https://wa.me/919825022222" target="_blank" className="text-green-400 text-2xl hover:text-green-300"><FaWhatsapp /></Link>
-              </li>
+              {/* Social links removed from mobile menu to avoid duplication */}
             </motion.ul>
           </div>
         )}

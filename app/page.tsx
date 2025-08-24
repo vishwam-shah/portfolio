@@ -1,12 +1,14 @@
 "use client";
-import Aboutme from '@/components/main/Aboutme';
-import Footer from '@/components/main/Footer';
-import Hero from '@/components/main/Hero';
-import Projects from '@/components/main/Projects';
-import Skills from '@/components/main/Skills';
-import Publications from '@/components/main/Publications';
-import Timeline from '@/components/main/Timeline';
-import AITypingChat from '@/components/sub/AITypingChat';
+import dynamic from 'next/dynamic';
+
+const Aboutme = dynamic(() => import('@/components/main/Aboutme'), { ssr: false });
+const Footer = dynamic(() => import('@/components/main/Footer'), { ssr: false });
+const Hero = dynamic(() => import('@/components/main/Hero'), { ssr: false });
+const Projects = dynamic(() => import('@/components/main/Projects'), { ssr: false });
+const Skills = dynamic(() => import('@/components/main/Skills'), { ssr: false });
+const Publications = dynamic(() => import('@/components/main/Publications'), { ssr: false });
+const Timeline = dynamic(() => import('@/components/main/Timeline'), { ssr: false });
+const AITypingChat = dynamic(() => import('@/components/sub/AITypingChat'), { ssr: false });
 
 export default function Home() {
   return (

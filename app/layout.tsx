@@ -1,14 +1,15 @@
 "use client";
 import './globals.css';
-import StarsCanvas from '@/components/main/StarBackground';
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/main/Navbar';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from 'next/font/google';
-import Loader from '@/components/main/Loader';
 import React, { useEffect, useState } from 'react';
 import { CursorifyProvider } from '@cursorify/react';
 
 const inter = Inter({ subsets: ['latin'] });
+const StarsCanvas = dynamic(() => import('@/components/main/StarBackground'), { ssr: false });
+const Loader = dynamic(() => import('@/components/main/Loader'), { ssr: false });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [showLoader, setShowLoader] = useState(true);
@@ -22,6 +23,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
+      <head>
+        <title>Vishwam Shah | AI Portfolio</title>
+        <meta name="description" content="Portfolio of Vishwam Shah - AI/ML & Full Stack Developer. Projects, skills, publications, and contact." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+      </head>
       <body className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}>
         <CursorifyProvider cursor="Z">
           {showLoader ? (
