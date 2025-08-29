@@ -29,7 +29,7 @@ const fullStackSkills = [
   { name: "TypeScript", icon: <SiTypescript size={38} color="#3178C6" /> },
   // { name: "PostgreSQL", icon: <SiPostgresql size={38} color="#336791" /> },
   { name: "MongoDB", icon: <SiMongodb size={38} color="#47A248" /> },
-  { name: "Docker", icon: <SiDocker size={38} color="#2496ED" /> },
+  // { name: "Docker", icon: <SiDocker size={38} color="#2496ED" /> },
   // { name: "GraphQL", icon: <SiGraphql size={38} color="#E10098" /> },
   { name: "Redis", icon: <SiRedis size={38} color="#DC382D" /> },
   // { name: "AWS", icon: <SiAmazonaws size={38} color="#FF9900" /> },

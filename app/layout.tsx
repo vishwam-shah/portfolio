@@ -1,10 +1,10 @@
 "use client";
 import './globals.css';
-import StarsCanvas from '@/components/main/StarBackground';
+import StarsCanvas from '@/components/main/StarsBackground'; // Renamed import to force chunk rebuild
 import Navbar from '@/components/main/Navbar';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from 'next/font/google';
-import Loader from '@/components/main/Loader';
+import Loader from '@/components/main/AppLoader';
 import React, { useEffect, useState } from 'react';
 // import { CursorifyProvider } from '@cursorify/react';
 

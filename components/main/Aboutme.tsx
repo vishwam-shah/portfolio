@@ -43,7 +43,7 @@ const Aboutme = () => {
           <Link href="https://wa.me/917984683397" target="_blank" className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400 cursor-pointer"><FaWhatsapp /></Link>
         </div>
         <Link
-          href="https://drive.google.com/file/d/1Z-xXY0Oxu7qDSU-C8F-jB7T7XqvQxwJL/view?usp=drive_link"
+          href="https://drive.google.com/file/d/17jxrOQIfwcipQO8qiOXj-CUzywQGuQ4v/view?usp=sharing"
           target="_blank"
   className="h-[40px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 w-[200px] button-primary text-center text-white cursor-pointer rounded-xl hover:bg-purple-500 flex items-center justify-center focus:ring-2 focus:ring-cyan-400"
         >
