@@ -12,8 +12,8 @@ const publications = [
 ];
 
 const Publications = () => (
-  <section className="w-full max-w-3xl mx-auto py-16 px-4">
-    <h2 className="text-3xl font-bold text-center text-white mb-8 tracking-widest uppercase">Publications</h2>
+  <section id="publications" className="w-full max-w-3xl mx-auto py-16 px-4">
+    <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-12 tracking-widest uppercase">Publications</h2>
     <ul className="space-y-8">
       {publications.map((pub, idx) => (
         <li key={idx} className="bg-gradient-to-r from-[#1a1a2e] to-[#23234d] rounded-xl p-6 shadow-lg border border-[#2d2d5a]">

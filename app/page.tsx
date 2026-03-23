@@ -7,6 +7,7 @@ import Skills from '@/components/main/Skills';
 import Publications from '@/components/main/Publications';
 import Timeline from '@/components/main/Timeline';
 import AITypingChat from '@/components/sub/AITypingChat';
+import ContactForm from '@/components/main/Contactform';
 
 export default function Home() {
   return (
@@ -35,6 +36,9 @@ export default function Home() {
       </section>
       <section className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-b from-[#030014] to-[#181829] rounded-3xl shadow-lg my-8">
         <Publications />
+      </section>
+      <section className="w-full max-w-7xl mx-auto px-4 py-12" id="contact">
+        <ContactForm visible={false} />
       </section>
       <Footer />
     </main>
