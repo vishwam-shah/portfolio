@@ -7,7 +7,7 @@ import {
   RxTwitterLogo,
 } from "react-icons/rx";
 
-import { FaDiscord, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -40,7 +40,7 @@ const Footer = () => {
                     </p>
                     <p className="flex flex-row items-center my-[15px] cursor-pointer hover:text-green-500">
                     <RxGithubLogo />
-                    <Link href="https://www.github.com/vishwams-shah " target="_blank"> <span className="text-[15px] ml-[6px]">Github</span></Link>   
+                    <Link href="https://github.com/vishwam-shah" target="_blank"> <span className="text-[15px] ml-[6px]">Github</span></Link>   
                     </p>
                     <p className="flex flex-row items-center my-[15px] cursor-pointer hover:text-green-500">
                         <RxAngle />
@@ -74,8 +74,8 @@ const Footer = () => {
                         <RxShadowInner />
                         <Link href="" target="_blank"><span className="text-[15px] ml-[6px]">Portfolio</span></Link>
                     </p>
-                    <p className="flex flex-row items-center my-2 cursor-pointer hover:text-blue-400">
-                        <FaDiscord />
+                    <p className="flex flex-row items-center my-2 cursor-pointer hover:text-green-400">
+                        <FaWhatsapp />
                         <Link href="tel:+917984683397" target="_blank"><span className="text-[15px] ml-[6px]">+91 79846 83397</span></Link>
                     </p>
                 </div>

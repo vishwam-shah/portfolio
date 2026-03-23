@@ -63,6 +63,12 @@ const Navbar = () => {
             <Link href="#projects" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
               Projects
             </Link>
+            <Link href="#timeline" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
+              Journey
+            </Link>
+            <Link href="#publications" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
+              Publications
+            </Link>
             <Link href="https://drive.google.com/file/d/1ITGxoA5EXfUnDje_atXKB14_GYCRGg6V/view?usp=drive_link" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
             <Link href="#contact" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
               Contact
@@ -120,6 +126,16 @@ const Navbar = () => {
               <li className="w-full">
                 <Link href="#projects" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
                   Projects
+                </Link>
+              </li>
+              <li className="w-full">
+                <Link href="#timeline" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
+                  Journey
+                </Link>
+              </li>
+              <li className="w-full">
+                <Link href="#publications" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
+                  Publications
                 </Link>
               </li>
               <li className="w-full">

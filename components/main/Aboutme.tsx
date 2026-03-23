@@ -9,7 +9,7 @@ import Link from 'next/link';
 const Aboutme = () => {
   return (
     <motion.section
-      id="about"
+      id="about-me"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2 }}

@@ -1,7 +1,8 @@
 
 import {
-  SiPython, SiPytorch, SiTensorflow, SiScikitlearn, SiOpencv, SiNumpy, SiPandas, SiJupyter, SiDocker, SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiTypescript, SiPostgresql, SiMongodb, SiGraphql, SiRedis, SiAmazonaws, SiGooglecloud, SiLinux, SiTailwindcss, SiStyledcomponents, SiJsonwebtokens, SiR, SiCplusplus
+  SiPython, SiPytorch, SiTensorflow, SiScikitlearn, SiOpencv, SiNumpy, SiPandas, SiJupyter, SiDocker, SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiTypescript, SiPostgresql, SiMongodb, SiGraphql, SiRedis, SiAmazonaws, SiGooglecloud, SiLinux, SiTailwindcss, SiStyledcomponents, SiJsonwebtokens, SiOpenai
 } from "react-icons/si";
+import { FaBrain, FaRobot, FaComments } from "react-icons/fa";
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -15,10 +16,10 @@ const aiSkills = [
   { name: "Pandas", icon: <SiPandas size={38} color="#150458" /> },
   { name: "Jupyter", icon: <SiJupyter size={38} color="#F37626" /> },
   { name: "Docker (MLOps)", icon: <SiDocker size={38} color="#2496ED" /> },
-  { name: "Deep Learning", icon: <SiR size={38} color="#276DC3" /> },
-  { name: "NLP", icon: <SiCplusplus size={38} color="#00599C" /> },
+  { name: "Deep Learning", icon: <FaBrain size={38} color="#EE4C2C" /> },
+  { name: "NLP", icon: <FaComments size={38} color="#22d3ee" /> },
   { name: "Computer Vision", icon: <SiOpencv size={38} color="#5C3EE8" /> },
-  { name: "Reinforcement Learning", icon: <SiPython size={38} color="#FFD21F" /> },
+  { name: "Reinforcement Learning", icon: <FaRobot size={38} color="#a855f7" /> },
 ];
 
 const fullStackSkills = [

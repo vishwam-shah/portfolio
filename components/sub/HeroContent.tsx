@@ -9,9 +9,8 @@ import {
 } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaDiscord, FaTwitter} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter} from "react-icons/fa";
 import Link from "next/link";
-import AITypingChat from "./AITypingChat";
 
 
 const HeroContent = () => {
@@ -57,9 +56,8 @@ const HeroContent = () => {
             className="flex flex-row gap-5 text-gray-200 text-[22px]"
           >
             <Link className="hover:text-green-400" href="https://www.linkedin.com/in/vishwam-shah/" target="_blank"><FaLinkedin /></Link>
-            <Link className="hover:text-green-400" href="https://www.github.com/vishwamshah07" target="_blank"><FaGithub /></Link>
-            <Link className="hover:text-green-400" href="https://discord.gg/" target="_blank"><FaDiscord /></Link>
-            <Link className="hover:text-green-400" href="https://www.twitter.com/" target="_blank"><FaTwitter /></Link>
+            <Link className="hover:text-green-400" href="https://github.com/vishwam-shah" target="_blank"><FaGithub /></Link>
+            <Link className="hover:text-green-400" href="https://twitter.com/vishwamshah007" target="_blank"><FaTwitter /></Link>
           </motion.div>
           <motion.a
             variants={slideInFromLeft(1)}

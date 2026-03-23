@@ -162,16 +162,16 @@ const AITypingModal = ({ onClose, suggestion, editable }: AITypingModalProps) =>
                 <div className="flex-1 h-px bg-cyan-700" />
               </div>
               <div className="flex justify-center gap-6 mt-2 text-2xl contact-icons-row">
-                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style={{border: 'none'}}>
+                <a href="https://wa.me/917984683397" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style={{border: 'none'}}>
                   <FaWhatsapp color="#22d3ee" />
                 </a>
-                <a href="mailto:your@email.com" target="_blank" rel="noopener noreferrer" aria-label="Mail" style={{border: 'none'}}>
+                <a href="mailto:vishwamshah007@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Mail" style={{border: 'none'}}>
                   <FaEnvelope color="#22d3ee" />
                 </a>
-                <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{border: 'none'}}>
+                <a href="https://instagram.com/vishwamshah07" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{border: 'none'}}>
                   <FaInstagram color="#22d3ee" />
                 </a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{border: 'none'}}>
+                <a href="https://linkedin.com/in/vishwam-shah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{border: 'none'}}>
                   <FaLinkedin color="#22d3ee" />
                 </a>
               </div>
