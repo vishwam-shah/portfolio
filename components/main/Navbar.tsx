@@ -63,7 +63,7 @@ const Navbar = () => {
             <Link href="#projects" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
               Projects
             </Link>
-            <Link href="https://drive.google.com/file/d/17jxrOQIfwcipQO8qiOXj-CUzywQGuQ4v/view?usp=sharing" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
+            <Link href="https://drive.google.com/file/d/1ITGxoA5EXfUnDje_atXKB14_GYCRGg6V/view?usp=drive_link" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
             <Link href="#contact" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
               Contact
             </Link>
