@@ -1,55 +1,50 @@
 "use client";
 
-import React, { useState, useRef, Suspense } from "react";
+import React, { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
-// @ts-ignore
+// @ts-expect-error - no types for the maath subpath
 import * as random from "maath/random/dist/maath-random.esm";
+import type { Points as ThreePoints } from "three";
 
-const StarBackground = (props: any) => {
-  const ref = useRef<any>();
-  
-  // 🌟 Reduced number of stars for better performance
+/** Slowly revolving particle "universe", tuned to read on a light background. */
+function StarField() {
+  const ref = useRef<ThreePoints>(null);
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(3000), { radius: 1.5 })
+    random.inSphere(new Float32Array(2400), { radius: 1.4 })
   );
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta * 0.02; // ✨ Slower, smoother rotation
-      ref.current.rotation.y -= delta * 0.04;
+      ref.current.rotation.x -= delta * 0.015;
+      ref.current.rotation.y -= delta * 0.025;
     }
   });
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
-      <Points
-        ref={ref}
-        positions={sphere}
-        stride={3} // Corrected (not 30!)
-        frustumCulled
-        {...props}
-      >
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled>
         <PointMaterial
           transparent
-          color="#CCCCCC" // Fixed typo: it was "$ccc" (invalid color)
-          size={0.005}
+          color="#7c5cff"
+          size={0.0045}
           sizeAttenuation
-          depthWrite={false} // Fixed typo: it was "dethWrite"
+          depthWrite={false}
+          opacity={0.55}
         />
       </Points>
     </group>
   );
-};
+}
 
-const StarsCanvas = () => (
-  <div className="w-full h-auto fixed inset-0 z-[20]">
-    <Canvas camera={{ position: [0, 0, 1] }}>
+const StarsBackground = () => (
+  <div className="pointer-events-none fixed inset-0 z-[1]">
+    <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
       <Suspense fallback={null}>
-        <StarBackground />
+        <StarField />
       </Suspense>
     </Canvas>
   </div>
 );
 
-export default StarsCanvas;
+export default StarsBackground;

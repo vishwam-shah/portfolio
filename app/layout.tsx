@@ -1,39 +1,65 @@
-"use client";
-import './globals.css';
-import StarsCanvas from '@/components/main/StarsBackground'; // Renamed import to force chunk rebuild
-import Navbar from '@/components/main/Navbar';
+import "./globals.css";
+import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Inter } from 'next/font/google';
-import Loader from '@/components/main/AppLoader';
-import React, { useEffect, useState } from 'react';
-// import { CursorifyProvider } from '@cursorify/react';
+import { fontVariables } from "./fonts";
+import AuroraBackground from "@/components/main/AuroraBackground";
+import Navbar from "@/components/main/Navbar";
+import Preloader from "@/components/main/Preloader";
+import CustomCursor from "@/components/main/CustomCursor";
+import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 
-const inter = Inter({ subsets: ['latin'] });
+export const metadata: Metadata = {
+  metadataBase: new URL("https://vishwamshah.vercel.app"),
+  title: "Vishwam Shah | AI Engineer & Full-Stack Developer",
+  description:
+    "AI engineer and full-stack developer. I build production LLM & RAG systems, on-device computer vision, and scalable Next.js / MERN platforms.",
+  keywords: [
+    "Vishwam Shah",
+    "AI Engineer",
+    "Full Stack Developer",
+    "Machine Learning",
+    "LLM",
+    "RAG",
+    "Computer Vision",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Portfolio",
+  ],
+  authors: [{ name: "Vishwam Shah" }],
+  openGraph: {
+    title: "Vishwam Shah | AI Engineer & Full-Stack Developer",
+    description:
+      "AI engineer and full-stack developer building production AI products.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vishwam Shah | AI Engineer & Full-Stack Developer",
+    description: "AI engineer and full-stack developer building production AI products.",
+  },
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [showLoader, setShowLoader] = useState(true);
+export const viewport: Viewport = {
+  themeColor: "#fbfbfd",
+};
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 1800);
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}>
-        
-          {showLoader ? (
-            <Loader />
-          ) : (
-            <>
-              <StarsCanvas />
-              <Navbar />
-              {children}
-              <SpeedInsights />
-            </>
-          )}
+    <html lang="en" className={fontVariables}>
+      <body className="min-h-screen bg-canvas font-sans text-zinc-900 antialiased">
+        <Preloader />
+        <ScrollProgressBar />
+        <CustomCursor />
+        <AuroraBackground />
+        <Navbar />
+        <div className="relative z-10">{children}</div>
+        <SpeedInsights />
       </body>
     </html>
   );

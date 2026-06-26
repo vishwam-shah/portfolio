@@ -1,95 +1,127 @@
+"use client";
 
+import React from "react";
 import {
-  SiPython, SiPytorch, SiTensorflow, SiScikitlearn, SiOpencv, SiNumpy, SiPandas, SiJupyter, SiDocker, SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiTypescript, SiPostgresql, SiMongodb, SiGraphql, SiRedis, SiAmazonaws, SiGooglecloud, SiLinux, SiTailwindcss, SiStyledcomponents, SiJsonwebtokens, SiOpenai
+  SiPython,
+  SiTypescript,
+  SiJavascript,
+  SiPytorch,
+  SiTensorflow,
+  SiScikitlearn,
+  SiOpencv,
+  SiHuggingface,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiFastapi,
+  SiFlask,
+  SiMongodb,
+  SiPostgresql,
+  SiRedis,
+  SiTailwindcss,
+  SiDocker,
+  SiVercel,
+  SiGit,
+  SiOpenai,
 } from "react-icons/si";
-import { FaBrain, FaRobot, FaComments } from "react-icons/fa";
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { TbBrandReactNative } from "react-icons/tb";
+import SectionHeading from "@/components/ui/SectionHeading";
+import GlassCard from "@/components/ui/GlassCard";
+import Marquee from "@/components/ui/Marquee";
+import Tag from "@/components/ui/Tag";
+import Reveal from "@/components/ui/Reveal";
 
-const aiSkills = [
-  { name: "Python", icon: <SiPython size={38} color="#3776AB" /> },
-  { name: "PyTorch", icon: <SiPytorch size={38} color="#EE4C2C" /> },
-  { name: "TensorFlow", icon: <SiTensorflow size={38} color="#FF6F00" /> },
-  { name: "Scikit-learn", icon: <SiScikitlearn size={38} color="#F7931E" /> },
-  { name: "HuggingFace", icon: <Image src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" width={38} height={38} /> },
-  { name: "Numpy", icon: <SiNumpy size={38} color="#013243" /> },
-  { name: "Pandas", icon: <SiPandas size={38} color="#150458" /> },
-  { name: "Jupyter", icon: <SiJupyter size={38} color="#F37626" /> },
-  { name: "Docker (MLOps)", icon: <SiDocker size={38} color="#2496ED" /> },
-  { name: "Deep Learning", icon: <FaBrain size={38} color="#EE4C2C" /> },
-  { name: "NLP", icon: <FaComments size={38} color="#22d3ee" /> },
-  { name: "Computer Vision", icon: <SiOpencv size={38} color="#5C3EE8" /> },
-  { name: "Reinforcement Learning", icon: <FaRobot size={38} color="#a855f7" /> },
+type Tech = { name: string; icon: React.ReactNode };
+
+const aiRow: Tech[] = [
+  { name: "Python", icon: <SiPython color="#3776AB" /> },
+  { name: "OpenAI", icon: <SiOpenai color="#10a37f" /> },
+  { name: "PyTorch", icon: <SiPytorch color="#EE4C2C" /> },
+  { name: "TensorFlow", icon: <SiTensorflow color="#FF6F00" /> },
+  { name: "scikit-learn", icon: <SiScikitlearn color="#F7931E" /> },
+  { name: "Hugging Face", icon: <SiHuggingface color="#FFD21E" /> },
+  { name: "OpenCV", icon: <SiOpencv color="#5C3EE8" /> },
+  { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
 ];
 
-const fullStackSkills = [
-  { name: "Next.js", icon: <SiNextdotjs size={38} color="#fff" /> },
-  { name: "React", icon: <SiReact size={38} color="#61DAFB" /> },
-  { name: "Node.js", icon: <SiNodedotjs size={38} color="#339933" /> },
-  { name: "Express", icon: <SiExpress size={38} color="#fff" /> },
-  { name: "TypeScript", icon: <SiTypescript size={38} color="#3178C6" /> },
-  // { name: "PostgreSQL", icon: <SiPostgresql size={38} color="#336791" /> },
-  { name: "MongoDB", icon: <SiMongodb size={38} color="#47A248" /> },
-  // { name: "Docker", icon: <SiDocker size={38} color="#2496ED" /> },
-  // { name: "GraphQL", icon: <SiGraphql size={38} color="#E10098" /> },
-  { name: "Redis", icon: <SiRedis size={38} color="#DC382D" /> },
-  // { name: "AWS", icon: <SiAmazonaws size={38} color="#FF9900" /> },
-  // { name: "GCP", icon: <SiGooglecloud size={38} color="#4285F4" /> },
-  { name: "JWT", icon: <SiJsonwebtokens size={38} color="#FCC624" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss size={38} color="#38BDF8" /> },
-  { name: "Styled Components", icon: <SiStyledcomponents size={38} color="#DB7093" /> },
+const devRow: Tech[] = [
+  { name: "Next.js", icon: <SiNextdotjs color="#000" /> },
+  { name: "React", icon: <SiReact color="#61DAFB" /> },
+  { name: "React Native", icon: <TbBrandReactNative color="#61DAFB" /> },
+  { name: "Node.js", icon: <SiNodedotjs color="#339933" /> },
+  { name: "FastAPI", icon: <SiFastapi color="#009688" /> },
+  { name: "Flask", icon: <SiFlask color="#000" /> },
+  { name: "MongoDB", icon: <SiMongodb color="#47A248" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql color="#4169E1" /> },
+  { name: "Redis", icon: <SiRedis color="#DC382D" /> },
+  { name: "Tailwind", icon: <SiTailwindcss color="#06B6D4" /> },
+  { name: "Docker", icon: <SiDocker color="#2496ED" /> },
+  { name: "Vercel", icon: <SiVercel color="#000" /> },
+  { name: "Git", icon: <SiGit color="#F05032" /> },
+  { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
+  { name: "Express", icon: <SiExpress color="#000" /> },
+];
+
+const Pill = ({ name, icon }: Tech) => (
+  <div className="flex shrink-0 items-center gap-2.5 rounded-full border border-line bg-white/70 px-5 py-3 shadow-soft backdrop-blur-sm">
+    <span className="text-xl">{icon}</span>
+    <span className="whitespace-nowrap text-sm font-medium text-fg2">{name}</span>
+  </div>
+);
+
+const categories = [
+  { title: "AI / LLM", items: ["OpenAI", "Gemini", "Claude", "Groq", "Prompt Engineering", "RAG", "AI Agents", "LangChain", "LlamaIndex"] },
+  { title: "Machine Learning", items: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "Kaggle"] },
+  { title: "Computer Vision", items: ["YOLO", "OpenCV", "OCR", "Roboflow", "CVAT"] },
+  { title: "Frontend", items: ["React.js", "Next.js", "React Native", "TypeScript", "Tailwind CSS", "HTML", "CSS"] },
+  { title: "Backend", items: ["Node.js", "Express.js", "FastAPI", "Flask"] },
+  { title: "Databases", items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Pinecone", "ChromaDB"] },
+  { title: "Languages", items: ["Python", "JavaScript", "TypeScript", "SQL"] },
+  { title: "DevOps & Tools", items: ["Git", "GitHub", "Docker", "CI/CD", "Vercel", "Railway", "Render", "Postman"] },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="flex flex-col items-center justify-center gap-8 py-12 relative">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-8 tracking-widest uppercase">
-        Skills
-      </h2>
-      <div className="w-full flex flex-col md:flex-row gap-12 justify-center items-start">
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-cyan-300 mb-4 flex items-center gap-2">
-            <span>🧠</span> AI / Machine Learning
-          </h3>
-          <div className="flex flex-wrap gap-6">
-            {aiSkills.map((skill, idx) => (
-              <motion.div
-                key={skill.name}
-                className="flex flex-col items-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.15, rotate: 6 }}
-                transition={{ duration: 0.5, type: 'spring', bounce: 0.3, delay: idx * 0.07 }}
-                viewport={{ once: true }}
-              >
-                {skill.icon}
-                <span className="text-white text-sm font-medium text-center mt-2">{skill.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-cyan-300 mb-4 flex items-center gap-2">
-            <span>🚀</span> Full Stack
-          </h3>
-          <div className="flex flex-wrap gap-6">
-            {fullStackSkills.map((skill, idx) => (
-              <motion.div
-                key={skill.name}
-                className="flex flex-col items-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.15, rotate: 6 }}
-                transition={{ duration: 0.5, type: 'spring', bounce: 0.3, delay: idx * 0.07 }}
-                viewport={{ once: true }}
-              >
-                {skill.icon}
-                <span className="text-white text-sm font-medium text-center mt-2">{skill.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+    <section id="skills" className="mx-auto w-full max-w-7xl px-5 py-24">
+      <SectionHeading
+        reveal="flip"
+        eyebrow="Toolbox"
+        title={
+          <>
+            The stack behind <span className="text-gradient-aurora">the work</span>
+          </>
+        }
+        subtitle="A focused toolkit across the AI and web spectrum, chosen for shipping real products."
+      />
+
+      <div className="mt-14 flex flex-col gap-4">
+        <Marquee duration="38s">
+          {aiRow.map((s) => (
+            <Pill key={s.name} {...s} />
+          ))}
+        </Marquee>
+        <Marquee duration="50s" reverse>
+          {devRow.map((s) => (
+            <Pill key={s.name} {...s} />
+          ))}
+        </Marquee>
       </div>
+
+      <Reveal stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {categories.map((c) => (
+          <GlassCard key={c.title} spotlight className="h-full p-6">
+            <h3 className="font-display text-base font-semibold text-fg">
+              {c.title}
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {c.items.map((t) => (
+                <Tag key={t}>{t}</Tag>
+              ))}
+            </div>
+          </GlassCard>
+        ))}
+      </Reveal>
     </section>
   );
 };

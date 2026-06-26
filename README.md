@@ -1,71 +1,36 @@
-<a name="readme-top"></a>
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<div align="center">
+## Getting Started
 
-  <h3><b>Vishwam Shah Portfolio</b></h3>
+First, run the development server:
 
-</div>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-# 📗 Table of Contents
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-- [ Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [📝 License](#license)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-# 📖 [Vishwam Shah Portfolio] <a name="about-project"></a>
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-**Vishwam Shah Portfolio** is a responsive web portfolio application where a developer can showcase their projects, skills, resume, and contact details — designed to highlight technical strengths in a clean, modern format.
+## Learn More
 
-## 🛠 Built With <a name="built-with"></a>
+To learn more about Next.js, take a look at the following resources:
 
-### Tech Stack <a name="tech-stack"></a>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://nextjs.org/">NextJs</a></li>
-    <li><a href="https://tailwindcss.com/">Tailwind</a></li>
-    <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
-    <li><a href="https://threejs.org/">ThreeJs</a></li>
-  </ul>
-</details>
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Key Features <a name="key-features"></a>
+## Deploy on Vercel
 
-- **[Mobile Responsive]**  
-  Optimized using mobile-first development for flawless experience on all screen sizes.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- **[Header Section]**  
-  Showcases Vishwam's image, brief intro, and CTA buttons for resume and contact.
-
-- **[Works Section]**  
-  Lists projects with screenshots, tech stack, and GitHub/live links.
-
-- **[About Section]**  
-  Detailed info on Vishwam's background, tech stack, and expertise.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Go to Live site](https://vishwam-shah-portfolio.vercel.app/) <!-- Change if you have a different domain -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## 💻 Getting Started <a name="getting-started"></a>
-
-To get a local copy up and running, follow these steps.
-
-### Prerequisites
-
-Install a code editor (e.g., VS Code):
-
-```sh
-https://visualstudio.microsoft.com
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

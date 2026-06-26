@@ -1,160 +1,173 @@
-"use client"
-import { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+"use client";
+
+import { useState, useEffect } from "react";
+import { HiBars3, HiXMark } from "react-icons/hi2";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/utils/cn";
+
+const links = [
+  { label: "About", href: "#about-me", id: "about-me" },
+  { label: "Experience", href: "#experience", id: "experience" },
+  { label: "Skills", href: "#skills", id: "skills" },
+  { label: "Work", href: "#projects", id: "projects" },
+  { label: "Research", href: "#publications", id: "publications" },
+  { label: "Contact", href: "#contact", id: "contact" },
+];
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const handleBodyOverflow = () => {
-      if (isMenuOpen && typeof window !== 'undefined') {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = 'auto';
-      }
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    handleBodyOverflow();
+  useEffect(() => {
+    const ids = ["home", ...links.map((l) => l.id)];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.body.style.overflow = 'auto'; // Reset overflow when unmounting component
+      document.body.style.overflow = "";
     };
-  }, [isMenuOpen]);
-
-  const handleClick = () => {
-    if (window.innerWidth <= 768) {
-      setIsMenuOpen(false);
-    }
-  };
+  }, [open]);
 
   return (
-    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#1f94942a] backdrop-blur-md z-50 px-2 md:px-10">
-      <div className="w-full h-full flex flex-row items-center justify-between m-auto px-2 md:px-[10px] gap-6">
-        <Link href="#about-me" className="h-auto w-auto flex flex-row items-center ml-1 md:ml-0">
-          <Image
-            src="/VS_logo_design_1.jpg"
-            alt="logo"
-            width={60}
-            height={60}
-            className="cursor-pointer hover:animate-slowspin rounded-[50%]"
-            loading="lazy"
-            priority={false}
-          />
-          <span className="font-bold ml-[10px] hidden md:block text-gray-300 hover:text-emerald-500">
-            AI Dev
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
+      <motion.nav
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={cn(
+          "flex w-full max-w-5xl items-center justify-between rounded-full px-3 py-2 transition-all duration-300",
+          scrolled
+            ? "border border-black/[0.07] bg-white/80 shadow-soft backdrop-blur-xl"
+            : "border border-transparent bg-transparent"
+        )}
+      >
+        <Link
+          href="#home"
+          className="ml-2 flex items-center gap-2 font-display text-sm font-bold tracking-tight text-zinc-900"
+        >
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-linear-to-br from-zinc-600 to-zinc-800 text-[13px] text-white shadow-soft">
+            VS
           </span>
+          <span className="hidden sm:block">Vishwam</span>
         </Link>
 
-        <div className=" md:flex  hidden w-[70%] h-auto border border-[#7042f861] bg-[#0300145e]  md:px-[20px] md:py-[10px] md:rounded-full text-gray-200 ">
-          <div className="flex md:flex-row md:items-center md:justify-between lg:justify-around w-full gap-5">
-            <Link href="#about-me" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
-              About me
+        {/* desktop links */}
+        <div className="hidden items-center gap-1 md:flex">
+          {links.map((l) => (
+            <Link
+              key={l.id}
+              href={l.href}
+              className={cn(
+                "relative rounded-full px-3.5 py-1.5 text-sm transition-colors",
+                active === l.id ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-900"
+              )}
+            >
+              {active === l.id && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 -z-10 rounded-full border border-black/[0.06] bg-zinc-100"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              {l.label}
             </Link>
-            <Link href="#skills" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
-              Skills
-            </Link>
-            <Link href="#projects" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
-              Projects
-            </Link>
-            <Link href="#timeline" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
-              Journey
-            </Link>
-            <Link href="#publications" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
-              Publications
-            </Link>
-            <Link href="https://drive.google.com/file/d/1ITGxoA5EXfUnDje_atXKB14_GYCRGg6V/view?usp=drive_link" target='_blank' className='cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400'>Get My Resume </Link>
-            <Link href="#contact" className="cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-green-400">
-              Contact
-            </Link>
-          </div>
+          ))}
         </div>
 
-        {/* Social links: visible on all devices */}
-        <div className="flex flex-row justify-between gap-5 text-gray-200 text-[24px]">
-          <Link href="https://www.linkedin.com/in/vishwam-shah/" target="_blank" className='hover:text-green-400'><FaLinkedin /></Link>
-          <Link href="https://github.com/Vishwam-shah" target="_blank" className='hover:text-green-400'><FaGithub /></Link>
-          <Link href="https://www.instagram.com/vishwamshah07" target="_blank" className='hover:text-pink-500'><FaInstagram /></Link>
-          <Link href="https://wa.me/919825022222" target="_blank" className='hover:text-green-400'><FaWhatsapp /></Link>
-        </div>
+        <div className="flex items-center gap-2">
+          <Link
+            href="#contact"
+            className="hidden rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-ink-800 md:block"
+          >
+            Let&apos;s talk
+          </Link>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center ml-2">
           <button
             type="button"
-            onClick={toggleMenu}
-            className="text-gray-200 focus:outline-none relative"
-            style={{ right: 0 }}
-            aria-label="Open menu"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white text-zinc-900 md:hidden"
           >
-            {isMenuOpen ? (
-              <FaTimes className="w-9 h-9 p-1" />
-            ) : (
-              <FaBars className="w-9 h-9 p-1" />
-            )}
+            {open ? <HiXMark className="h-5 w-5" /> : <HiBars3 className="h-5 w-5" />}
           </button>
         </div>
+      </motion.nav>
 
-        {/* Responsive Menu */}
-        {isMenuOpen && (
-          <div
-            className="w-full fixed top-[65px] left-0 bg-[#181829] bg-opacity-95 flex flex-col items-center z-50 min-h-screen pt-8 px-4"
-            onClick={toggleMenu}
+      {/* mobile sheet */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 top-0 z-40 flex flex-col bg-canvas/95 px-6 pb-10 pt-28 backdrop-blur-xl md:hidden"
+            onClick={() => setOpen(false)}
           >
             <motion.ul
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="flex flex-col items-center w-full gap-6"
+              initial="hidden"
+              animate="show"
+              variants={{ show: { transition: { staggerChildren: 0.05 } } }}
+              className="flex flex-col gap-2"
             >
-              <li className="w-full">
-                <Link href="#about-me" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
-                  About me
+              {links.map((l) => (
+                <motion.li
+                  key={l.id}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    show: { opacity: 1, x: 0 },
+                  }}
+                >
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-2xl border border-black/[0.07] bg-white px-5 py-4 font-display text-2xl font-semibold text-zinc-900 shadow-soft"
+                  >
+                    {l.label}
+                  </Link>
+                </motion.li>
+              ))}
+              <motion.li
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  show: { opacity: 1, x: 0 },
+                }}
+              >
+                <Link
+                  href="#contact"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 block rounded-2xl bg-ink px-5 py-4 text-center font-display text-xl font-semibold text-white"
+                >
+                  Let&apos;s talk
                 </Link>
-              </li>
-              <li className="w-full">
-                <Link href="#skills" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
-                  Skills
-                </Link>
-              </li>
-              <li className="w-full">
-                <Link href="#projects" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
-                  Projects
-                </Link>
-              </li>
-              <li className="w-full">
-                <Link href="#timeline" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
-                  Journey
-                </Link>
-              </li>
-              <li className="w-full">
-                <Link href="#publications" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
-                  Publications
-                </Link>
-              </li>
-              <li className="w-full">
-                <Link href="https://drive.google.com/file/d/17jxrOQIfwcipQO8qiOXj-CUzywQGuQ4v/view?usp=sharing" target="_blank" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all">
-                  Get My Resume
-                </Link>
-              </li>
-              <li className="w-full">
-                <Link href="#contact" className="block w-full text-center py-4 text-lg font-semibold text-cyan-200 rounded-xl bg-[#23234d] mb-2 active:bg-cyan-900 focus:bg-cyan-900 transition-all" onClick={handleClick}>
-                  Contact
-                </Link>
-              </li>
-              {/* Social links removed from mobile menu to avoid duplication */}
+              </motion.li>
             </motion.ul>
-          </div>
+          </motion.div>
         )}
-
-      </div>
-    </div>
+      </AnimatePresence>
+    </header>
   );
 };
 
