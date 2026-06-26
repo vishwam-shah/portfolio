@@ -135,7 +135,7 @@ const AIAssistant = () => {
   };
 
   return (
-    <section id="ai" className="mx-auto w-full max-w-3xl px-5 py-24">
+    <section id="ai" className="mx-auto w-full max-w-3xl px-5 py-16 sm:py-24">
       <SectionHeading
         reveal="tilt"
         eyebrow="AI Playground"

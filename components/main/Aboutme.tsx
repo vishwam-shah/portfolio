@@ -25,7 +25,7 @@ const socials = [
 
 const Aboutme = () => {
   return (
-    <section id="about-me" className="mx-auto w-full max-w-7xl px-5 py-24">
+    <section id="about-me" className="mx-auto w-full max-w-7xl px-5 py-16 sm:py-24">
       <SectionHeading
         reveal="blur"
         eyebrow="About"

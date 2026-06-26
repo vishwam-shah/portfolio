@@ -23,7 +23,7 @@ const certs = [
 ];
 
 const Publications = () => (
-  <section id="publications" className="mx-auto w-full max-w-4xl px-5 py-24">
+  <section id="publications" className="mx-auto w-full max-w-4xl px-5 py-16 sm:py-24">
     <SectionHeading
       reveal="blur"
       eyebrow="Research & Credentials"

@@ -122,7 +122,7 @@ const Cover = ({ p }: { p: Project }) => (
 
 const Projects = () => {
   return (
-    <section id="projects" className="mx-auto w-full max-w-7xl px-5 py-24">
+    <section id="projects" className="mx-auto w-full max-w-7xl px-5 py-16 sm:py-24">
       <SectionHeading
         reveal="zoom"
         eyebrow="Selected Work"

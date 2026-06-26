@@ -183,7 +183,7 @@ const Experience = () => {
   }, [path]);
 
   return (
-    <section id="experience" className="mx-auto w-full max-w-5xl px-5 py-24">
+    <section id="experience" className="mx-auto w-full max-w-5xl px-5 py-16 sm:py-24">
       <SectionHeading
         reveal="skew"
         title={
@@ -242,7 +242,7 @@ const Experience = () => {
                     nodeRefs.current[i] = el;
                   }}
                   style={{ ["--nx" as string]: `${nx}%` }}
-                  className="timeline-node absolute top-10 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-2xl border border-line bg-white/90 text-aurora-violet shadow-glow backdrop-blur-sm md:top-1/2 md:-translate-x-1/2"
+                  className="timeline-node absolute top-10 z-10 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl border border-line bg-white/90 text-aurora-violet shadow-glow backdrop-blur-sm md:top-1/2"
                 >
                   {r.current && (
                     <span

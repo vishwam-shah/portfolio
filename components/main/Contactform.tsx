@@ -67,7 +67,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="mx-auto w-full max-w-7xl px-5 py-24">
+    <section id="contact" className="mx-auto w-full max-w-7xl px-5 py-16 sm:py-24">
       <SectionHeading
         reveal="unfold"
         eyebrow="Contact"

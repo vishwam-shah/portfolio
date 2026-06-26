@@ -155,14 +155,14 @@ const Hero = () => {
 
           <motion.div
             variants={item}
-            className="mt-2 flex items-center gap-8 border-t border-black/10 pt-6"
+            className="mt-2 flex w-full flex-wrap items-center gap-x-6 gap-y-4 border-t border-black/10 pt-6 sm:gap-x-8"
           >
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="font-display text-3xl font-bold text-zinc-900">
+                <div className="font-display text-2xl font-bold text-zinc-900 sm:text-3xl">
                   {s.value}
                 </div>
-                <div className="text-xs uppercase tracking-wider text-zinc-400">
+                <div className="text-[11px] uppercase tracking-wider text-zinc-400 sm:text-xs">
                   {s.label}
                 </div>
               </div>
@@ -175,7 +175,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease, delay: 0.2 }}
-          className="relative aspect-square w-full max-w-[560px] justify-self-center"
+          className="relative order-first aspect-square w-full max-w-[340px] justify-self-center sm:max-w-[440px] lg:order-none lg:max-w-[560px]"
         >
           <div ref={chipRef} className="relative h-full w-full">
             <div className="absolute inset-0 -z-10 rounded-full bg-aurora-violet/15 blur-[100px]" />
