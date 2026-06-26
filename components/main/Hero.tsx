@@ -91,7 +91,7 @@ const Hero = () => {
         >
           <motion.h1
             variants={item}
-            className="font-display text-5xl font-bold leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl"
+            className="font-display text-[2.5rem] font-bold leading-[1.04] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl"
           >
             <Typewriter
               speed={70}
@@ -175,10 +175,10 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease, delay: 0.2 }}
-          className="relative order-first aspect-square w-full max-w-[340px] justify-self-center sm:max-w-[440px] lg:order-none lg:max-w-[560px]"
+          className="relative order-first aspect-square w-full max-w-[260px] justify-self-center sm:max-w-[420px] lg:order-none lg:max-w-[560px]"
         >
           <div ref={chipRef} className="relative h-full w-full">
-            <div className="absolute inset-0 -z-10 rounded-full bg-aurora-violet/15 blur-[100px]" />
+            <div className="absolute inset-[12%] -z-10 rounded-full bg-aurora-violet/15 blur-[70px]" />
             <HeroChip />
           </div>
         </motion.div>
