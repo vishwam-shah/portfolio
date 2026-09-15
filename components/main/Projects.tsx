@@ -9,6 +9,8 @@ import {
   HiOutlineSparkles,
   HiOutlineDocumentMagnifyingGlass,
   HiOutlineArrowTrendingUp,
+  HiOutlineMicrophone,
+  HiOutlineEnvelope,
 } from "react-icons/hi2";
 import { FiGithub } from "react-icons/fi";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -23,7 +25,8 @@ type Project = {
   description: string;
   tech: string[];
   Icon: React.ComponentType<{ className?: string }>;
-  image: string;
+  /** Optional cover screenshot; the gradient tint stands in when absent. */
+  image?: string;
   from: string;
   to: string;
   featured?: boolean;
@@ -31,23 +34,43 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "AI Chatbot Platform",
-    category: "LLM · Multi-tenant SaaS",
+    name: "Antrenor AI",
+    category: "Voice Agents · Interview Prep",
     description:
-      "A platform that unifies WhatsApp, Instagram and email under one intelligent conversational AI, with a centralized management dashboard for every channel.",
-    tech: ["LLM APIs", "Next.js", "WhatsApp API", "Multi-tenant"],
-    Icon: HiOutlineChatBubbleLeftRight,
-    image: "/projects/chatbot-platform.jpg",
+      "An AI interviewer platform running real-time voice interviews over LiveKit: it refines your CV for a target role, generates role-specific questions and scores each answer automatically. Backed by a curated bank of real interview questions scraped from 130+ companies across multiple verified sources.",
+    tech: ["Next.js", "Python", "LiveKit", "Anthropic API", "Web Scraping"],
+    Icon: HiOutlineMicrophone,
     from: "from-aurora-violet/40",
     to: "to-aurora-blue/10",
     featured: true,
   },
   {
-    name: "Chatbot Platform Portal",
-    category: "RAG · Knowledge Base",
+    name: "CHATZEN",
+    category: "LLM · Multi-tenant SaaS",
+    description:
+      "A multi-tenant conversational AI platform that unifies WhatsApp, Instagram and other channels in one interface, with tenant-specific knowledge grounding and centralized management for every conversation.",
+    tech: ["Next.js", "Python", "Node.js", "LLM APIs", "PostgreSQL"],
+    Icon: HiOutlineChatBubbleLeftRight,
+    image: "/projects/chatbot-platform.jpg",
+    from: "from-aurora-violet/35",
+    to: "to-aurora-blue/10",
+  },
+  {
+    name: "MailPilot",
+    category: "Tool-Using Agent · Email",
+    description:
+      "A tool-using AI email assistant that takes natural-language instructions to reply, forward and organize mail, classifying each message's intent to cut manual triage down to the messages that actually need a human.",
+    tech: ["Next.js", "LLM API", "Tool Calling", "Intent Classification"],
+    Icon: HiOutlineEnvelope,
+    from: "from-aurora-pink/30",
+    to: "to-aurora-blue/10",
+  },
+  {
+    name: "Knowledge Base Portal",
+    category: "RAG · Vector Search",
     description:
       "A RAG knowledge system using vector databases and LLMs for contextual Q&A and semantic search over large enterprise document sets.",
-    tech: ["RAG", "Vector DB", "Semantic Search", "LLM"],
+    tech: ["RAG", "Pinecone", "Embeddings", "Semantic Search"],
     Icon: HiOutlineCircleStack,
     image: "/projects/chatbot-portal.jpg",
     from: "from-aurora-teal/35",
@@ -57,8 +80,8 @@ const projects: Project[] = [
     name: "ANPR Mobile Application",
     category: "Computer Vision · Mobile",
     description:
-      "A React Native app integrating YOLO, OCR and OpenCV for real-time vehicle number-plate detection, recognition and fleet analytics.",
-    tech: ["React Native", "YOLO", "OCR", "OpenCV"],
+      "A React Native field app that reads vehicle number plates from the live camera feed - a custom YOLO detector plus a fine-tuned OCR model, run fully on-device through ONNX Runtime at 83% accuracy and sub-300ms per frame.",
+    tech: ["React Native", "YOLO", "OCR", "ONNX Runtime", "OpenCV"],
     Icon: HiOutlineCamera,
     image: "/projects/anpr.jpg",
     from: "from-aurora-indigo/40",
@@ -103,20 +126,27 @@ const Cover = ({ p }: { p: Project }) => (
   <div
     className={`relative ${p.featured ? "aspect-[16/7]" : "aspect-[16/10]"} w-full overflow-hidden rounded-2xl border border-line`}
   >
-    {/* gradient tint shows while the image loads / as a fallback */}
+    {/* gradient tint shows while the image loads, and stands in when a
+        project has no screenshot yet */}
     <div className={`absolute inset-0 bg-linear-to-br ${p.from} ${p.to}`} />
-    <Image
-      src={p.image}
-      alt={p.name}
-      fill
-      sizes={p.featured ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
-      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-    />
+    {p.image && (
+      <Image
+        src={p.image}
+        alt={p.name}
+        fill
+        sizes={p.featured ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
+        className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+      />
+    )}
     {/* legibility wash for the corner icon */}
     <div className="absolute inset-0 bg-linear-to-t from-black/35 via-transparent to-black/10" />
     <span className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-xl border border-white/30 bg-white/20 text-white backdrop-blur-md">
       <p.Icon className="h-5 w-5" />
     </span>
+    {/* without a screenshot the tile would read as empty - centre the mark */}
+    {!p.image && (
+      <p.Icon className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 text-white/45" />
+    )}
   </div>
 );
 

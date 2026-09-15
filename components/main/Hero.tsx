@@ -25,7 +25,8 @@ const HeroChip = dynamic(() => import("@/components/main/HeroChip"), {
 const stats = [
   { value: "20+", label: "Client projects delivered" },
   { value: "$50K+", label: "Transactions powered" },
-  { value: "IEEE", label: "Published research" },
+  { value: "40 hrs", label: "Manual work automated / week" },
+  { value: "IEEE", label: "Accepted research" },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -115,10 +116,10 @@ const Hero = () => {
             variants={item}
             className="max-w-xl text-base leading-relaxed text-zinc-600 sm:text-lg"
           >
-            I build production AI products end to end: LLM &amp; RAG systems,
-            on-device computer vision, and scalable{" "}
-            <span className="font-medium text-zinc-900">MERN</span> /{" "}
-            <span className="font-medium text-zinc-900">Next.js</span>{" "}
+            I build production AI products end to end: LLM, RAG &amp; agentic
+            systems, on-device computer vision, and scalable{" "}
+            <span className="font-medium text-zinc-900">Next.js</span> /{" "}
+            <span className="font-medium text-zinc-900">FastAPI</span>{" "}
             platforms. From fine-tuned models to the last 10% of the UI, I ship
             things people actually use.
           </motion.p>

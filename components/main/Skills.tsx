@@ -71,14 +71,14 @@ const Pill = ({ name, icon }: Tech) => (
 );
 
 const categories = [
-  { title: "AI / LLM", items: ["OpenAI", "Gemini", "Claude", "Groq", "Prompt Engineering", "RAG", "AI Agents", "LangChain", "LlamaIndex"] },
-  { title: "Machine Learning", items: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "Kaggle"] },
-  { title: "Computer Vision", items: ["YOLO", "OpenCV", "OCR", "Roboflow", "CVAT"] },
-  { title: "Frontend", items: ["React.js", "Next.js", "React Native", "TypeScript", "Tailwind CSS", "HTML", "CSS"] },
-  { title: "Backend", items: ["Node.js", "Express.js", "FastAPI", "Flask"] },
-  { title: "Databases", items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Pinecone", "ChromaDB"] },
-  { title: "Languages", items: ["Python", "JavaScript", "TypeScript", "SQL"] },
-  { title: "DevOps & Tools", items: ["Git", "GitHub", "Docker", "CI/CD", "Vercel", "Railway", "Render", "Postman"] },
+  { title: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "Kotlin", "Swift"] },
+  { title: "AI & Agentic AI", items: ["OpenAI", "Claude", "Gemini", "Groq", "LangChain", "CrewAI", "LlamaIndex", "OpenAI Agents SDK", "Prompt Engineering"] },
+  { title: "RAG & Vector Search", items: ["Pinecone", "ChromaDB", "FAISS", "pgvector", "Embeddings", "Semantic Chunking"] },
+  { title: "ML & Deep Learning", items: ["PyTorch", "TensorFlow", "Hugging Face Transformers", "Scikit-learn", "NLP", "Time Series"] },
+  { title: "Computer Vision & Edge", items: ["YOLO", "OpenCV", "OCR", "ONNX Runtime", "Roboflow", "CVAT"] },
+  { title: "Frontend", items: ["React.js", "Next.js", "React Native", "TypeScript", "Tailwind CSS"] },
+  { title: "Backend & APIs", items: ["FastAPI", "Flask", "Node.js", "Express.js", "REST", "WebSockets", "LiveKit"] },
+  { title: "Data, Cloud & DevOps", items: ["PostgreSQL", "MongoDB", "Redis", "Docker", "GCP", "AWS", "Azure", "CI/CD", "Git"] },
 ];
 
 const Skills = () => {

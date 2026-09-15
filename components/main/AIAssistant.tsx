@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { SparkleIcon, CheckIcon } from "@/components/ui/icons/AnimatedIcons";
 import { AIInputWithLoading } from "@/components/ui/ai-input-with-loading";
@@ -86,14 +86,18 @@ const AIAssistant = () => {
         "service_2svnepu",
         "template_vmeyoep",
         {
+          // from_email feeds the template Reply-To, which must be a valid
+          // email - the visitor only gives a phone here, so keep the owner's
+          // address and surface the phone in the message body instead.
           from_name: lead.current.name,
-          from_email: lead.current.phone,
-          message: `${lead.current.message}\n\nName: ${lead.current.name}\nPhone: ${lead.current.phone}`,
+          from_email: "vishwamshah007@gmail.com",
+          message: `New lead from the AI assistant:\n\n${lead.current.message}\n\nName: ${lead.current.name}\nPhone: ${lead.current.phone}`,
         },
-        "N27zaoCMdknIVor8g"
+        { publicKey: "N27zaoCMdknIVor8g" }
       );
       toast.success("Message sent to Vishwam!");
-    } catch {
+    } catch (err) {
+      console.error("EmailJS error:", err);
       toast.error("Couldn't send. Please email vishwamshah007@gmail.com directly.");
     }
   };
@@ -245,8 +249,6 @@ const AIAssistant = () => {
         </div>
         </div>
       </motion.div>
-
-      <Toaster theme="light" position="bottom-right" richColors closeButton />
     </section>
   );
 };

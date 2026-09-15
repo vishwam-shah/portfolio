@@ -7,7 +7,6 @@ import {
   HiOutlineSparkles,
   HiOutlineShieldCheck,
   HiOutlineCodeBracket,
-  HiOutlineWindow,
 } from "react-icons/hi2";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -30,32 +29,30 @@ const roles: Role[] = [
   {
     company: "HunterRepo",
     role: "AI Engineer",
-    period: "Feb 2026 - Present",
-    location: "Remote",
-    current: true,
+    period: "Mar 2026 - Jul 2026",
+    location: "Remote · Kuala Lumpur, Malaysia",
     Icon: HiOutlineCpuChip,
     points: [
-      "Engineered a full-stack vehicle-repossession platform for the Malaysian market - a React Native field-agent app and a Next.js portal for agencies and banks.",
-      "Built an on-device ANPR pipeline: custom object detection localises plates in live frames, a fine-tuned OCR model reads Malaysian formats, validated via ONNX Runtime in a native Android frame processor - no server round-trips.",
+      "Owned the ML pipeline for a vehicle-recovery platform end to end: curated a custom dataset, trained and validated a YOLO plate-detection model, and shipped it at 83% accuracy with sub-300ms on-device inference.",
+      "Deployed to edge devices via ONNX Runtime and native Kotlin & Swift modules, removing server round-trips entirely, and built the supporting Python services and operations portal.",
       "Created a continuous-learning loop with an active-learning gate that auto-confirms high-confidence reads and routes uncertain crops to CVAT for retraining.",
       "Architected a 12-step repossession state machine with RBAC, real-time SSE notifications, automated invoicing and a full audit log.",
     ],
-    tags: ["React Native", "ONNX", "Computer Vision", "OCR", "Next.js"],
+    tags: ["YOLO", "ONNX Runtime", "Kotlin", "Swift", "React Native", "Next.js"],
   },
   {
     company: "RealtyEaseAI",
-    role: "Full-Stack AI Developer",
-    period: "Apr 2025 - Present",
-    location: "Remote",
-    current: true,
+    role: "Full-Stack AI Engineer",
+    period: "Apr 2024 - Mar 2026",
+    location: "Remote · New York, USA",
     Icon: HiOutlineSquares2X2,
     points: [
-      "Built and deployed a production multi-tenant SaaS on the MERN + Next.js stack with a multi-role Super Admin dashboard and RBAC.",
-      "Integrated OpenAI, Gemini and Groq for AI automation and intelligent workflows, plus RAG pipelines for summarization, extraction and classification.",
-      "Shipped real-time messaging & voice with Pusher / WebSockets and Redis (Upstash); integrated payments powering $50K+ in processed transactions.",
-      "Led a team of 2, ran code reviews and maintained CI/CD for stable releases.",
+      "Architected and shipped LLM features into a production multi-tenant SaaS on GCP, integrating Groq to automate lead capture, document handling and task tracking - cutting 40 hours of manual work per week.",
+      "Designed and tuned robust prompt pipelines for classification, information extraction and content generation, iterating on accuracy, response quality, latency and token cost across multiple AI providers.",
+      "Built a production RAG pipeline over client documents with intelligent chunking, embeddings and vector search, grounding assistant answers in company-specific data and sharply reducing hallucinations.",
+      "Delivered the platform end to end with RBAC, secure APIs and real-time messaging, supporting $50K+ in transactions, while leading a 2-person team through code reviews, testing and releases.",
     ],
-    tags: ["Next.js", "MERN", "RAG", "LLM APIs", "Redis", "Leadership"],
+    tags: ["Next.js", "GCP", "Groq", "RAG", "Prompt Engineering", "Leadership"],
   },
   {
     company: "Espread Solutions",
@@ -77,9 +74,10 @@ const roles: Role[] = [
     location: "Pune, India",
     Icon: HiOutlineShieldCheck,
     points: [
-      "Contributed to an AI-based sentiment-analysis solution for a government defense use case.",
+      "Built and evaluated deep-learning sentiment-analysis models for a government defense use case, classifying text as positive, negative or neutral with NLP preprocessing and feature extraction.",
+      "Developed the full pipeline - preprocessing, data preparation, training, hyperparameter tuning, evaluation and real-time inference - benchmarking models on accuracy, precision, recall and F1.",
     ],
-    tags: ["NLP", "Sentiment Analysis", "Python"],
+    tags: ["NLP", "Sentiment Analysis", "PyTorch", "Python"],
   },
   {
     company: "Demaze Technologies",
@@ -88,25 +86,18 @@ const roles: Role[] = [
     location: "Ahmedabad, India",
     Icon: HiOutlineCodeBracket,
     points: [
-      "Developed VidhyaX (React + Tailwind); improved performance ~25% via lazy loading and code splitting; resolved 5+ PRs.",
+      "Built a production-ready RBAC dashboard, secure authentication system and admin panel for VidhyaX, with protected routes, secure session handling and permission-based UI rendering across multiple user roles.",
+      "Developed and integrated RESTful APIs for user, role and administrative operations, keeping frontend and backend in step behind a secure, scalable access layer.",
+      "Improved page performance ~25% through lazy loading and code splitting; shipped 5+ reviewed pull requests.",
     ],
-    tags: ["React", "Tailwind", "Performance"],
-  },
-  {
-    company: "Techno IT Hub",
-    role: "Frontend Developer Intern",
-    period: "Jul 2023 - Nov 2023",
-    location: "Ahmedabad, India",
-    Icon: HiOutlineWindow,
-    points: ["Built responsive marketing websites with HTML, CSS and JavaScript."],
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["React", "RBAC", "REST APIs", "Auth", "Tailwind"],
   },
 ];
 
 // switchback x-positions (% of width) - kept in the central gutter so the road
 // connects at each card's inner edge and weaves between the columns, never
 // crossing a card face.
-const NODE_X = [44, 56, 43, 57, 45, 55];
+const NODE_X = [44, 56, 43, 57, 45];
 
 // Catmull-Rom -> cubic bezier smooth path through points
 function smoothPath(pts: [number, number][]) {
@@ -191,7 +182,7 @@ const Experience = () => {
             The road I&apos;ve <span className="text-gradient-aurora">travelled</span>
           </>
         }
-        subtitle="Six roles across AI engineering and full-stack product, building, leading and deploying."
+        subtitle="Five roles across AI engineering and full-stack product - training models, shipping platforms and leading small teams."
       />
 
       <div ref={containerRef} className="relative mt-16">

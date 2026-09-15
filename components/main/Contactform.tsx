@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import {
   HiOutlineEnvelope,
   HiOutlineMapPin,
@@ -50,17 +50,15 @@ const Contact = () => {
     setSending(true);
 
     emailjs
-      .sendForm(
-        "service_2svnepu",
-        "template_vmeyoep",
-        form.current,
-        "N27zaoCMdknIVor8g"
-      )
+      .sendForm("service_2svnepu", "template_vmeyoep", form.current, {
+        publicKey: "N27zaoCMdknIVor8g",
+      })
       .then(() => {
         toast.success("Thanks for reaching out, I'll get back to you soon!");
         form.current?.reset();
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("EmailJS error:", err);
         toast.error("Something went wrong. Please email me directly.");
       })
       .finally(() => setSending(false));
@@ -176,8 +174,6 @@ const Contact = () => {
           </form>
         </div>
       </Reveal>
-
-      <Toaster theme="light" position="bottom-right" richColors closeButton />
 
       <style jsx>{`
         :global(.ipt) {

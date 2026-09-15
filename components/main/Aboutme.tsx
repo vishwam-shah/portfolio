@@ -12,8 +12,8 @@ import ShimmerButton from "@/components/ui/ShimmerButton";
 const facts = [
   { k: "Based in", v: "Ahmedabad, India" },
   { k: "Education", v: "M.Tech AI · PDEU" },
-  { k: "Currently", v: "AI Engineer · HunterRepo" },
-  { k: "Focus", v: "LLMs · CV · Full-Stack" },
+  { k: "Status", v: "Open to AI roles" },
+  { k: "Focus", v: "Agentic AI · RAG · Vision" },
 ];
 
 const socials = [
@@ -44,26 +44,28 @@ const Aboutme = () => {
               <p>
                 Hi, I&apos;m{" "}
                 <span className="font-semibold text-zinc-900">Vishwam Shah</span>,
-                an AI engineer and full-stack developer pursuing an{" "}
+                an AI engineer and full-stack developer finishing an{" "}
                 <span className="font-medium text-zinc-900">M.Tech in
                 Artificial Intelligence</span>{" "}
-                at PDEU, after a B.Tech in Computer Science. I build production
-                systems that pair real machine learning with clean, scalable web
-                apps.
+                at PDEU, after a B.E. in Information Technology at GTU. I build
+                production systems that pair real machine learning with clean,
+                scalable web apps.
               </p>
               <p>
                 My work spans{" "}
-                <span className="font-medium text-zinc-900">LLM &amp; RAG
-                pipelines</span>,{" "}
+                <span className="font-medium text-zinc-900">LLM, RAG &amp;
+                agentic pipelines</span>,{" "}
                 <span className="font-medium text-zinc-900">on-device computer
                 vision</span>{" "}
-                (ANPR / OCR), and{" "}
+                (YOLO / OCR shipped to edge devices via ONNX), and{" "}
                 <span className="font-medium text-zinc-900">multi-tenant
-                SaaS</span> on the MERN &amp; Next.js stack. I&apos;ve shipped
-                platforms powering{" "}
+                SaaS</span> on Next.js and GCP. I&apos;ve shipped platforms
+                powering{" "}
                 <span className="font-medium text-zinc-900">$50K+ in
-                transactions</span>, led small teams, and published BCI research
-                at an IEEE conference.
+                transactions</span>, automated{" "}
+                <span className="font-medium text-zinc-900">40 hours of manual
+                work a week</span> for a client, led small teams, and published
+                BCI research accepted at an IEEE conference.
               </p>
               <p className="text-zinc-500">
                 I care about the whole loop, from training the model to the last

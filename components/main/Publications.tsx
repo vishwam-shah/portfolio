@@ -11,16 +11,28 @@ const paper = {
   title: "EEG-Based Motor Imagery Classification Using Deep Learning Techniques",
   authors:
     "M. Dsylva, V. Shah, S. Acharya, S. Vankadiya, Dr. S. Satapathy, Dr. N. Singh",
-  venue: "16th IEEE International Conference, Indore",
-  link: "#",
+  venue: "16th IEEE International Conference · IIT Indore",
+  status: "Accepted · DOI to be announced",
+  link: "",
   tags: ["Deep Learning", "EEG / BCI", "CNN", "Signal Processing"],
 };
 
 const certs = [
   { name: "Azure AI Fundamentals", issuer: "Microsoft", year: "2022" },
   { name: "Python Using AI/ML", issuer: "KSI", year: "2021" },
-  { name: "Programming in Java (ELITE)", issuer: "NPTEL", year: "2022" },
+  { name: "Programming in Java", issuer: "NPTEL", year: "2022" },
 ];
+
+const Card = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const className = "glass group block p-7 transition-all duration-300 hover:shadow-glow";
+  return href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
+    </a>
+  ) : (
+    <div className={className}>{children}</div>
+  );
+};
 
 const Publications = () => (
   <section id="publications" className="mx-auto w-full max-w-4xl px-5 py-16 sm:py-24">
@@ -35,12 +47,9 @@ const Publications = () => (
     />
 
     <Reveal variant="rise" className="mt-14">
-      <a
-        href={paper.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="glass group block p-7 transition-all duration-300 hover:shadow-glow"
-      >
+      {/* the paper is accepted but not yet indexed, so it only becomes a link
+          once `paper.link` is filled in */}
+      <Card href={paper.link}>
       <div className="flex items-start gap-4">
         <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-linear-to-br from-aurora-violet/30 to-aurora-teal/20 text-fg">
           <HiOutlineDocumentText className="h-5 w-5" />
@@ -50,20 +59,25 @@ const Publications = () => (
             <h3 className="font-display text-lg font-semibold text-fg sm:text-xl">
               {paper.title}
             </h3>
-            <FiArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-fg4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+            {paper.link && (
+              <FiArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-fg4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+            )}
           </div>
           <div className="mt-1 font-mono text-xs uppercase tracking-widest text-aurora-teal">
             {paper.venue}
           </div>
           <p className="mt-3 text-sm leading-relaxed text-fg3">{paper.authors}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600">
+              {paper.status}
+            </span>
             {paper.tags.map((t) => (
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
         </div>
       </div>
-      </a>
+      </Card>
     </Reveal>
 
     {/* certifications */}
