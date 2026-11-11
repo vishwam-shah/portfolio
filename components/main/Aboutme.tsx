@@ -9,13 +9,6 @@ import GlassCard from "@/components/ui/GlassCard";
 import Reveal from "@/components/ui/Reveal";
 import ShimmerButton from "@/components/ui/ShimmerButton";
 
-const facts = [
-  { k: "Based in", v: "Ahmedabad, India" },
-  { k: "Education", v: "M.Tech AI · PDEU" },
-  { k: "Status", v: "Open to AI roles" },
-  { k: "Focus", v: "Agentic AI · RAG · Vision" },
-];
-
 const socials = [
   { Icon: FaLinkedin, href: "https://www.linkedin.com/in/vishwam-shah", hover: "hover:text-aurora-blue" },
   { Icon: FaGithub, href: "https://github.com/vishwam-shah", hover: "hover:text-zinc-900" },
@@ -37,42 +30,37 @@ const Aboutme = () => {
         }
       />
 
-      <div className="mt-14 grid gap-5 lg:grid-cols-[1.5fr_1fr]">
+      <div className="mt-14">
         <Reveal>
           <GlassCard className="h-full p-8 sm:p-10">
             <div className="space-y-5 text-base leading-relaxed text-zinc-600 sm:text-lg">
               <p>
-                Hi, I&apos;m{" "}
-                <span className="font-semibold text-zinc-900">Vishwam Shah</span>,
-                an AI engineer and full-stack developer finishing an{" "}
-                <span className="font-medium text-zinc-900">M.Tech in
-                Artificial Intelligence</span>{" "}
-                at PDEU, after a B.E. in Information Technology at GTU. I build
-                production systems that pair real machine learning with clean,
-                scalable web apps.
+                I&apos;m{" "}
+                <span className="font-semibold text-zinc-900">Vishwam Shah</span>.
+                I build AI products that reach production and stay there. Most
+                of my work starts with a business problem rather than a model:
+                manual work eating the week, support that won&apos;t scale,
+                documents nobody has time to read.
               </p>
               <p>
-                My work spans{" "}
-                <span className="font-medium text-zinc-900">LLM, RAG &amp;
-                agentic pipelines</span>,{" "}
-                <span className="font-medium text-zinc-900">on-device computer
-                vision</span>{" "}
-                (YOLO / OCR shipped to edge devices via ONNX), and{" "}
-                <span className="font-medium text-zinc-900">multi-tenant
-                SaaS</span> on Next.js and GCP. I&apos;ve shipped platforms
-                powering{" "}
+                I own the whole build, so you deal with one person instead of
+                stitching a model together with a frontend contractor. That has
+                meant conversational AI handling live customer channels across{" "}
+                <span className="font-medium text-zinc-900">WhatsApp and
+                Instagram</span>, voice agents running real-time interviews, and
+                vision apps that run on the phone itself with no server round
+                trip. Platforms I&apos;ve shipped have powered{" "}
                 <span className="font-medium text-zinc-900">$50K+ in
-                transactions</span>, automated{" "}
-                <span className="font-medium text-zinc-900">40 hours of manual
-                work a week</span> for a client, led small teams, and published
-                BCI research accepted at an IEEE conference.
+                transactions</span> across{" "}
+                <span className="font-medium text-zinc-900">20+ client
+                projects</span>.
               </p>
               <p className="text-zinc-500">
-                I care about the whole loop, from training the model to the last
-                10% of the interface.
+                You see something running early and often, not a status update.
+                An M.Tech in Artificial Intelligence sits behind the work, but
+                what matters is that it holds up once real users are on it.
               </p>
             </div>
-
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <ShimmerButton href="#contact" variant="dark">
                 <HiOutlineEnvelope className="h-4 w-4" />
@@ -94,22 +82,6 @@ const Aboutme = () => {
           </GlassCard>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <GlassCard spotlight={false} className="h-full p-8">
-            <div className="grid h-full grid-cols-2 gap-x-4 gap-y-7 content-center">
-              {facts.map((f) => (
-                <div key={f.k}>
-                  <div className="text-xs uppercase tracking-wider text-zinc-400">
-                    {f.k}
-                  </div>
-                  <div className="mt-1 font-display text-lg font-semibold text-zinc-900">
-                    {f.v}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
-        </Reveal>
       </div>
     </section>
   );

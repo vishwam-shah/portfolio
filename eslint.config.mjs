@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored third-party components, copied verbatim from the ReactBits
+    // shadcn registry. They assign refs during render, which react-hooks/refs
+    // flags. Linting them only produces noise we would have to re-fix on every
+    // upstream re-pull, so they are excluded rather than patched.
+    "components/reactbits/**",
   ]),
 ]);
 

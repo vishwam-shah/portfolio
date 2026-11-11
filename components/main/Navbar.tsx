@@ -15,6 +15,13 @@ const links = [
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 
+/**
+ * Adaptive nav. The hero is a dark shader band, so while the bar is still over
+ * it (unscrolled) everything inverts to light type on a hairline glass pill.
+ * Once scrolled onto the light body it returns to the white pill with dark
+ * type. `scrolled` doubles as the "am I over the hero" flag because the hero is
+ * the first section and fills the viewport.
+ */
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -58,17 +65,17 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "flex w-full max-w-5xl items-center justify-between rounded-full px-3 py-2 transition-all duration-300",
-          scrolled
-            ? "border border-black/[0.07] bg-white/80 shadow-soft backdrop-blur-xl"
-            : "border border-transparent bg-transparent"
+          "crystal crystal-light flex w-full max-w-5xl items-center justify-between rounded-full px-3 py-2 transition-all duration-500",
+          scrolled && "shadow-soft"
         )}
       >
         <Link
           href="#home"
           className="ml-2 flex items-center gap-2 font-display text-sm font-bold tracking-tight text-zinc-900"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-linear-to-br from-zinc-600 to-zinc-800 text-[13px] text-white shadow-soft">
+          <span
+            className="grid h-8 w-8 place-items-center rounded-full bg-linear-to-br from-zinc-600 to-zinc-800 text-[13px] text-white shadow-soft"
+          >
             VS
           </span>
           <span className="hidden sm:block">Vishwam</span>
@@ -82,7 +89,9 @@ const Navbar = () => {
               href={l.href}
               className={cn(
                 "relative rounded-full px-3.5 py-1.5 text-sm transition-colors",
-                active === l.id ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-900"
+                active === l.id
+                  ? "text-zinc-900"
+                  : "text-zinc-500 hover:text-zinc-900"
               )}
             >
               {active === l.id && (

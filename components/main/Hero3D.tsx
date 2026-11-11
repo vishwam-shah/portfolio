@@ -51,22 +51,43 @@ function Core() {
   );
 }
 
+/**
+ * Deterministic PRNG (mulberry32). The dust field used Math.random() inside a
+ * useMemo, which runs during render — react-hooks/purity flags that, and it is
+ * a real hazard rather than a lint nit: an unmemoized re-render would hand the
+ * geometry a brand new particle cloud and the dust would visibly jump. Seeding
+ * makes the field pure, identical every render, and identical between server
+ * and client.
+ */
+function makeRandom(seed: number) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const DUST_POSITIONS = (() => {
+  const rand = makeRandom(0x5eed);
+  const count = 700;
+  const arr = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const r = 2.2 + rand() * 2.4;
+    const theta = rand() * Math.PI * 2;
+    const phi = Math.acos(2 * rand() - 1);
+    arr[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    arr[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    arr[i * 3 + 2] = r * Math.cos(phi);
+  }
+  return arr;
+})();
+
 /** Orbiting particle dust around the core. */
 function Dust() {
   const ref = useRef<THREE.Points>(null);
-  const positions = React.useMemo(() => {
-    const count = 700;
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      const r = 2.2 + Math.random() * 2.4;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      arr[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      arr[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      arr[i * 3 + 2] = r * Math.cos(phi);
-    }
-    return arr;
-  }, []);
+  const positions = DUST_POSITIONS;
 
   useFrame((_, delta) => {
     if (ref.current) ref.current.rotation.y += delta * 0.04;

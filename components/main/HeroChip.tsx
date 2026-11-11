@@ -114,7 +114,7 @@ function Chip() {
     []
   );
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     const t = state.clock.elapsedTime;
     if (group.current) {
       const targetY = pointer.x * 0.4;

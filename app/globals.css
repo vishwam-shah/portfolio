@@ -368,3 +368,99 @@ html[data-custom-cursor] .cursor-ring {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Crystal glass (navbar)
+   Heavy vibrancy blur + a layered specular stack: a bright inset top edge, a
+   faceted gradient border (brightest along the top, picking up the hero
+   shader's cyan at the bottom), a diagonal sheen across the face, and inner
+   depth so the panel reads as a thick slab rather than a flat tint.
+   `isolation: isolate` keeps the z-index:-1 pseudo-elements beneath the nav's
+   own content, so the type stays crisp instead of being washed by the sheen.
+--------------------------------------------------------------------------- */
+@layer components {
+  .crystal {
+    position: relative;
+    isolation: isolate;
+    border: 0;
+    backdrop-filter: blur(24px) saturate(185%);
+    -webkit-backdrop-filter: blur(24px) saturate(185%);
+  }
+
+  /* diagonal specular sweep across the face */
+  .crystal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(255, 255, 255, 0.04) 28%,
+      transparent 52%,
+      rgba(255, 255, 255, 0.05) 78%,
+      rgba(255, 255, 255, 0.14) 100%
+    );
+  }
+
+  /* faceted edge: a 1px gradient ring masked to the border band only */
+  .crystal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    padding: 1px;
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .crystal-dark {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.025) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.07),
+      inset 0 0 28px 0 rgba(90, 210, 244, 0.07),
+      0 8px 24px -12px rgba(0, 0, 0, 0.65),
+      0 28px 64px -32px rgba(0, 0, 0, 0.85);
+  }
+  .crystal-dark::after {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.10) 38%,
+      rgba(255, 255, 255, 0.03) 70%,
+      rgba(90, 210, 244, 0.22) 100%
+    );
+  }
+
+  .crystal-light {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.74) 0%,
+      rgba(239, 241, 246, 0.56) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.55),
+      0 1px 2px rgba(16, 16, 24, 0.04),
+      0 14px 34px -20px rgba(16, 16, 24, 0.26);
+  }
+  .crystal-light::after {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(16, 16, 24, 0.07) 55%,
+      rgba(16, 16, 24, 0.10) 100%
+    );
+  }
+}

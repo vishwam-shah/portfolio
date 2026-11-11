@@ -10,23 +10,37 @@ import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { HiArrowDown, HiOutlineEnvelope } from "react-icons/hi2";
 import ShimmerButton from "@/components/ui/ShimmerButton";
 import Typewriter from "@/components/ui/Typewriter";
-import HeroDither from "@/components/main/HeroDither";
 
-// Three.js chip is client-only and heavy, load without SSR.
-const HeroChip = dynamic(() => import("@/components/main/HeroChip"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 grid place-items-center">
-      <div className="h-32 w-32 animate-spin-slow rounded-3xl border border-dashed border-aurora-violet/30" />
-    </div>
-  ),
-});
+/**
+ * Hero — full-bleed WebGL "Waves" shader behind the headline.
+ *
+ * Background is components/ui/adisyon-shader (21st.dev Shader Builder, zero
+ * dependencies, one WebGL1 canvas) with its built-in cursor interaction
+ * enabled, so the wave field swirls under the pointer. It does NOT consult
+ * prefers-reduced-motion, so it animates everywhere.
+ *
+ * The shader's palette is a BEACH recipe (deep water -> foam -> sand)
+ * rather than restyling the rest of the site: the hero was previously the only
+ * dark section on a light site, which read as a transplant. Same hues, raised
+ * values — so the hero now belongs to the page and no other section changed.
+ *
+ * HeroChip (the 3D AI chip) and HeroDither are intentionally no longer
+ * rendered here. Both files are kept in components/main/ — the chip is only
+ * unmounted from this section, not deleted.
+ */
+const ShaderBackground = dynamic(
+  () => import("@/components/ui/adisyon-shader").then((m) => m.ShaderBackground),
+  { ssr: false, loading: () => <div className="h-full w-full bg-[#EFE2C4]" /> }
+);
 
-const stats = [
-  { value: "20+", label: "Client projects delivered" },
-  { value: "$50K+", label: "Transactions powered" },
-  { value: "40 hrs", label: "Manual work automated / week" },
-  { value: "IEEE", label: "Accepted research" },
+// Only the two figures that already existed in this codebase are kept here.
+// "40 hrs manual work automated" and "IEEE accepted research" were removed as
+// requested: credentials and vague automation claims do not convert clients.
+// Replacements are intentionally NOT invented — add real numbers you can
+// stand behind (users served, uptime, cost saved, repeat-client rate).
+const stats: { prefix?: string; value: number; suffix?: string; label: string }[] = [
+  { value: 20, suffix: "+", label: "Client projects delivered" },
+  { prefix: "$", value: 50, suffix: "K+", label: "Transactions powered" },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -39,15 +53,59 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
 
+/**
+ * Counts up to the figure on mount. A number that visibly resolves reads as
+ * measured rather than decorative, which is the point of putting it in front
+ * of a prospective client.
+ */
+function StatValue({
+  prefix,
+  value,
+  suffix,
+}: {
+  prefix?: string;
+  value: number;
+  suffix?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const target = { v: 0 };
+    const tween = gsap.to(target, {
+      v: value,
+      duration: 1.6,
+      delay: 0.9,
+      ease: "power2.out",
+      onUpdate: () => {
+        if (ref.current) ref.current.textContent = String(Math.round(target.v));
+      },
+    });
+    return () => {
+      tween.kill();
+    };
+  }, [value]);
+
+  return (
+    <span className="font-display text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+      {prefix}
+      <span ref={ref}>0</span>
+      {suffix}
+    </span>
+  );
+}
+
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const chipRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
+  // Scroll-linked exit: the copy lifts and dissolves as the hero scrolls away,
+  // so the hand-off to the next section is a move rather than a cut.
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.to(chipRef.current, {
-        yPercent: -16,
+      gsap.to(contentRef.current, {
+        yPercent: -14,
+        opacity: 0,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -64,31 +122,31 @@ const Hero = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-5 pt-28 md:pt-24"
+      className="relative flex min-h-screen w-full items-center overflow-hidden bg-[#EFE2C4]"
     >
-      {/* dithered hero background - full bleed across the viewport */}
-      <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 overflow-hidden">
-        <HeroDither />
-        <div className="absolute inset-x-0 bottom-0 h-44 bg-linear-to-t from-canvas via-canvas/60 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-canvas/70 to-transparent" />
+      {/* full-bleed shader — swirls under the cursor */}
+      <div className="absolute inset-0 z-0">
+        <ShaderBackground className="h-full w-full" />
       </div>
 
-      {/* soft scrim behind the copy so text reads cleanly over the dither */}
+      {/* left-weighted scrim so the copy reads over the wave crests */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(70% 65% at 30% 45%, rgba(251,251,253,0.92) 0%, rgba(251,251,253,0.55) 38%, transparent 70%)",
+            "linear-gradient(100deg, rgba(250,246,238,0.88) 0%, rgba(250,246,238,0.56) 40%, rgba(250,246,238,0.14) 70%, rgba(250,246,238,0) 100%)",
         }}
       />
 
-      <div className="relative z-10 grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        {/* ---------- Left: copy ---------- */}
+      <div
+        ref={contentRef}
+        className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-24 pt-32 md:pt-28"
+      >
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex flex-col items-start gap-6"
+          className="flex max-w-3xl flex-col items-start gap-6"
         >
           <motion.h1
             variants={item}
@@ -156,32 +214,20 @@ const Hero = () => {
 
           <motion.div
             variants={item}
-            className="mt-2 flex w-full flex-wrap items-center gap-x-6 gap-y-4 border-t border-black/10 pt-6 sm:gap-x-8"
+            className="mt-4 grid w-full max-w-xl grid-cols-2 gap-3"
           >
             {stats.map((s) => (
-              <div key={s.label}>
-                <div className="font-display text-2xl font-bold text-zinc-900 sm:text-3xl">
-                  {s.value}
-                </div>
-                <div className="text-[11px] uppercase tracking-wider text-zinc-400 sm:text-xs">
+              <div
+                key={s.label}
+                className="crystal crystal-light rounded-2xl px-5 py-4"
+              >
+                <StatValue prefix={s.prefix} value={s.value} suffix={s.suffix} />
+                <div className="mt-1 text-[11px] uppercase tracking-wider text-zinc-400">
                   {s.label}
                 </div>
               </div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* ---------- Right: 3D core ---------- */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease, delay: 0.2 }}
-          className="relative order-first aspect-square w-full max-w-[260px] justify-self-center sm:max-w-[420px] lg:order-none lg:max-w-[560px]"
-        >
-          <div ref={chipRef} className="relative h-full w-full">
-            <div className="absolute inset-[12%] -z-10 rounded-full bg-aurora-violet/15 blur-[70px]" />
-            <HeroChip />
-          </div>
         </motion.div>
       </div>
     </section>

@@ -4,13 +4,21 @@ import React from "react";
 import Image from "next/image";
 import {
   HiOutlineChatBubbleLeftRight,
-  HiOutlineCircleStack,
   HiOutlineCamera,
   HiOutlineSparkles,
   HiOutlineDocumentMagnifyingGlass,
   HiOutlineArrowTrendingUp,
   HiOutlineMicrophone,
   HiOutlineEnvelope,
+  HiOutlineHome,
+  HiOutlineBuildingOffice2,
+  HiOutlineCpuChip,
+  HiOutlineCommandLine,
+  HiOutlineMusicalNote,
+  HiOutlineDocumentText,
+  HiOutlineSquares2X2,
+  HiOutlineChartBar,
+  HiOutlineBolt,
 } from "react-icons/hi2";
 import { FiGithub } from "react-icons/fi";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -40,6 +48,7 @@ const projects: Project[] = [
       "An AI interviewer platform running real-time voice interviews over LiveKit: it refines your CV for a target role, generates role-specific questions and scores each answer automatically. Backed by a curated bank of real interview questions scraped from 130+ companies across multiple verified sources.",
     tech: ["Next.js", "Python", "LiveKit", "Anthropic API", "Web Scraping"],
     Icon: HiOutlineMicrophone,
+    image: "/projects/antrenor-ai.jpg",
     from: "from-aurora-violet/40",
     to: "to-aurora-blue/10",
     featured: true,
@@ -51,11 +60,109 @@ const projects: Project[] = [
       "A multi-tenant conversational AI platform that unifies WhatsApp, Instagram and other channels in one interface, with tenant-specific knowledge grounding and centralized management for every conversation.",
     tech: ["Next.js", "Python", "Node.js", "LLM APIs", "PostgreSQL"],
     Icon: HiOutlineChatBubbleLeftRight,
-    image: "/projects/chatbot-platform.jpg",
+    image: "/projects/chatzen.jpg",
     from: "from-aurora-violet/35",
     to: "to-aurora-blue/10",
   },
   {
+    name: "Rachnova",
+    category: "Technology Group - Product & AI",
+    description:
+      "A technology group site spanning three practices - Engineering, Intelligence and Studio - covering web platforms, product apps, applied AI and agentic systems for companies that want one team from first build through to market.",
+    tech: ["Applied AI", "Agentic Systems", "iOS / Android"],
+    Icon: HiOutlineCpuChip,
+    image: "/projects/rachnova.jpg",
+    from: "from-aurora-violet/35",
+    to: "to-aurora-indigo/10",
+  },
+  {
+    name: "AgenticMVP",
+    category: "AI Product Studio - Sydney",
+    description:
+      "An AI product studio that audits a business's workflows, ranks the gaps by cost, effort and risk, then builds guarded agentic systems kept under human approval. Covers multi-step agent workflows, evals and guardrails, private company knowledge search and voice agents.",
+    tech: ["Agentic Workflows", "Evals & Guardrails", "Voice Agents"],
+    Icon: HiOutlineCommandLine,
+    image: "/projects/agenticmvp.jpg",
+    from: "from-aurora-blue/35",
+    to: "to-aurora-violet/10",
+  },
+  {
+    name: "Trimesha",
+    category: "Digital Solutions - Custom Software",
+    description:
+      "A digital solutions company site covering AI-powered custom software: web and mobile development, UI/UX, cloud infrastructure, API development and data analytics for businesses building and scaling digital products.",
+    tech: ["Next.js", "React Native", "Flutter", "AWS", "GraphQL"],
+    Icon: HiOutlineSquares2X2,
+    image: "/projects/trimesha.jpg",
+    from: "from-aurora-teal/35",
+    to: "to-aurora-blue/10",
+  },
+  {
+    name: "RealtyEaseAI",
+    category: "Real Estate - Managed Operations",
+    description:
+      "A managed execution service pairing AI-enhanced virtual assistants with a quality assurance manager acting as a fractional COO. Two team tracks cover day-to-day operations and digital growth, with a two-business-hour response guarantee and 48-hour onboarding.",
+    tech: ["CRM Integration", "Ops Automation", "Lead Capture"],
+    Icon: HiOutlineBuildingOffice2,
+    image: "/projects/realtyease.jpg",
+    from: "from-aurora-indigo/35",
+    to: "to-aurora-teal/10",
+  },
+  {
+    name: "Reliance Realty Advisers",
+    category: "Real Estate - Brokerage Site",
+    description:
+      "A brokerage site serving buyers and sellers across Minnesota and Florida, with property search for both states, seller home valuations, community guides, financing resources and agent profiles.",
+    tech: ["Property Search", "Lead Capture", "Local SEO"],
+    Icon: HiOutlineHome,
+    image: "/projects/reliance-brokerage.jpg",
+    from: "from-aurora-blue/30",
+    to: "to-aurora-teal/10",
+  },
+  {
+    name: "Sunset Cleaning & Maintenance",
+    category: "Local Services - Marketing Site",
+    description:
+      "A marketing site for a New York cleaning company serving homes and businesses, covering office, retail, residential and post-construction cleaning with eco-friendly products, built to convert local search into booked jobs.",
+    tech: ["Service Site", "Lead Capture", "Local SEO"],
+    Icon: HiOutlineBolt,
+    image: "/projects/sunset-cleaning.jpg",
+    from: "from-aurora-pink/30",
+    to: "to-aurora-violet/10",
+  },
+  {
+    name: "Tailor",
+    category: "LLM - Resume Tailoring",
+    description:
+      "Paste a job description, upload a resume as PDF, DOCX or LaTeX, and it rewrites the resume in the job's own language - with every change traceable back to real experience rather than invented. Files stay in memory unless a run is saved.",
+    tech: ["Next.js", "LLM API", "PDF / DOCX Parsing"],
+    Icon: HiOutlineDocumentText,
+    image: "/projects/resume-customizer.jpg",
+    from: "from-aurora-violet/35",
+    to: "to-aurora-blue/10",
+  },
+  {
+    name: "Vinyl",
+    category: "Web App - Music Player",
+    description:
+      "A browser music player with a library split into all songs, favourites and recents, custom playlists, local file playback, sorting by title, artist or recency, and quick links out to YouTube and JioSaavn.",
+    tech: ["React", "Web Audio", "Playlists"],
+    Icon: HiOutlineMusicalNote,
+    image: "/projects/music-player.jpg",
+    from: "from-aurora-pink/30",
+    to: "to-aurora-indigo/10",
+  },
+  {
+    name: "Mini Pokedex",
+    category: "Web App - Data & Team Building",
+    description:
+      "A Pokedex for Generations I and II with searchable, sortable stat tables per Pokemon, plus a team builder that aggregates a six-slot roster into overall team stats so you can see where a line-up is strong or exposed.",
+    tech: ["React", "PokeAPI", "Data Visualisation"],
+    Icon: HiOutlineChartBar,
+    image: "/projects/mini-pokedex.jpg",
+    from: "from-aurora-teal/30",
+    to: "to-aurora-blue/10",
+  },  {
     name: "MailPilot",
     category: "Tool-Using Agent · Email",
     description:
@@ -63,17 +170,6 @@ const projects: Project[] = [
     tech: ["Next.js", "LLM API", "Tool Calling", "Intent Classification"],
     Icon: HiOutlineEnvelope,
     from: "from-aurora-pink/30",
-    to: "to-aurora-blue/10",
-  },
-  {
-    name: "Knowledge Base Portal",
-    category: "RAG · Vector Search",
-    description:
-      "A RAG knowledge system using vector databases and LLMs for contextual Q&A and semantic search over large enterprise document sets.",
-    tech: ["RAG", "Pinecone", "Embeddings", "Semantic Search"],
-    Icon: HiOutlineCircleStack,
-    image: "/projects/chatbot-portal.jpg",
-    from: "from-aurora-teal/35",
     to: "to-aurora-blue/10",
   },
   {
