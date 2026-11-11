@@ -10,7 +10,7 @@ import { gsap } from "gsap";
  *  Backdrop : ReactBits "LiquidChrome" — MIT + Commons Clause, zero deps, raw
  *             WebGL, cursor-reactive. Shortlisted alternates sit beside it in
  *             components/reactbits/ and are a one-line import swap:
- *             MoltenMetal, Iridescence. Compare them at /loader-lab.
+ *             MoltenMetal, Iridescence.
  *
  *  No mark, no name, no rule, no progress rail, no scrim. The shader holds the
  *  screen on its own and then the curtains take it away.

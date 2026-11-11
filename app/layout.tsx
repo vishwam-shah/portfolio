@@ -8,7 +8,6 @@ import Navbar from "@/components/main/Navbar";
 import Preloader from "@/components/main/Preloader";
 import CustomCursor from "@/components/main/CustomCursor";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
-import SiteChrome from "@/components/main/SiteChrome";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vishwamshah.vercel.app"),
@@ -61,13 +60,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body className="min-h-screen bg-canvas font-sans text-zinc-900 antialiased">
-        <SiteChrome>
-          <Preloader />
-          <ScrollProgressBar />
-          <CustomCursor />
-          <AuroraBackground />
-          <Navbar />
-        </SiteChrome>
+        <Preloader />
+        <ScrollProgressBar />
+        <CustomCursor />
+        <AuroraBackground />
+        <Navbar />
         <div className="relative z-10">{children}</div>
         <Toaster theme="light" position="bottom-right" richColors closeButton />
         <SpeedInsights />
